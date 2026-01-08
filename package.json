@@ -1,0 +1,10 @@
+{
+    "name": "codecal-backend",
+    "version": "1.0.0",
+    "dependencies": {
+        "@supabase/supabase-js": "^2.38.0",
+        "node-fetch": "^3.3.2",
+        "nodemailer": "^6.9.8",
+        "twilio": "^4.20.0"
+    }
+}

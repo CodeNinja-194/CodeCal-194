@@ -89,7 +89,7 @@
 
             <div class="input-group">
                 <ion-icon name="call-outline"></ion-icon>
-                <input type="tel" id="phoneNumber" placeholder="+91 9999999999"
+                <input type="tel" id="phoneNumber" placeholder="+919876543210"
                     style="width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); padding: 1rem 1rem 1rem 3rem; border-radius: 12px; color: white;">
             </div>
             <button class="glass-btn full-width primary-btn" onclick="handlePhoneLogin()"
@@ -202,7 +202,28 @@
         };
 
         window.handlePhoneLogin = async () => {
-            const phone = document.getElementById('phoneNumber').value;
+            let phone = document.getElementById('phoneNumber').value.trim();
+
+            // Auto-format: remove spaces, dashes, parentheses
+            phone = phone.replace(/[\s\-\(\)]/g, '');
+
+            // Validate E.164 format: must start with + and have 10-15 digits
+            if (!phone.startsWith('+')) {
+                // If user forgot +, assume India (+91)
+                if (phone.length === 10) {
+                    phone = '+91' + phone;
+                } else {
+                    showCustomAlert("Please enter phone with country code. Example: +919876543210");
+                    return;
+                }
+            }
+
+            // Check if it looks valid (+ followed by 10-15 digits)
+            if (!/^\+\d{10,15}$/.test(phone)) {
+                showCustomAlert("Invalid phone format. Use: +919876543210 (no spaces)");
+                return;
+            }
+
             try {
                 window.confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
                 const code = prompt("Enter OTP sent to your phone:");

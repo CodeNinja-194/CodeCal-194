@@ -1,13 +1,36 @@
 // Step 1: Data Source
 let contests = [];
 
-// Fetch real data from Kontests API
+// Fetch real data from Kontests API with Caching & Timeout
 async function fetchContests() {
     const grid = document.getElementById('contestGrid');
+
+    // 1. Check Cache (Fast Track)
+    const cachedData = localStorage.getItem('codecal_cache');
+    const cacheTime = localStorage.getItem('codecal_cache_time');
+    const ONE_HOUR = 60 * 60 * 1000;
+
+    if (cachedData && cacheTime && (Date.now() - cacheTime < ONE_HOUR)) {
+        console.log("Using cached contest data");
+        contests = JSON.parse(cachedData);
+        // Correct Date objects from JSON string
+        contests.forEach(c => c.time = new Date(c.time));
+        renderContests();
+        return;
+    }
+
     if (grid) grid.innerHTML = '<div class="loading-spinner">Fetching live contests...</div>';
 
     try {
-        const response = await fetch('https://kontests.net/api/v1/all');
+        // 2. Fast Fetch with Timeout (4 seconds max)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+        const response = await fetch('https://kontests.net/api/v1/all', {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
         const data = await response.json();
 
         // Map API data to our format
@@ -23,67 +46,64 @@ async function fetchContests() {
             url: c.url
         }));
 
-        // Manually ensure LeetCode Biweekly is present (API might miss it if far out)
+        // Manually ensure LeetCode Biweekly is present
         const manualLeetCode = {
             id: 998,
             platform: 'LeetCode',
             name: 'Biweekly Contest 174',
-            time: new Date("2026-01-17T07:30:00"), // Saturday
+            time: new Date("2026-01-17T07:30:00"),
             url: 'https://leetcode.com/contest/biweekly-contest-174/'
         };
 
-        // Combine and sort (GFG removed as requested)
+        // Combine
         contests = [...apiContests, manualLeetCode];
         contests.sort((a, b) => a.time - b.time);
 
+        // 3. Save to Cache
+        localStorage.setItem('codecal_cache', JSON.stringify(contests));
+        localStorage.setItem('codecal_cache_time', Date.now());
+
         renderContests();
     } catch (error) {
-        console.error("Failed to fetch contests:", error);
-        // Fallback Data
+        console.error("Fetch failed or timed out:", error);
+        // Fallback Data - January & February 2026 Contests
         contests = [
-            {
-                id: 1,
-                platform: 'AtCoder',
-                name: 'Beginner Contest 440',
-                time: new Date("2026-01-10T21:00:00"),
-                url: 'https://atcoder.jp/contests/abc440'
-            },
-            {
-                id: 2,
-                platform: 'LeetCode',
-                name: 'Weekly Contest 484',
-                time: new Date("2026-01-11T08:00:00"),
-                url: 'https://leetcode.com/contest/weekly-contest-484/'
-            },
-            {
-                id: 3,
-                platform: 'AtCoder',
-                name: 'Regular Contest 212',
-                time: new Date("2026-01-11T21:00:00"),
-                url: 'https://atcoder.jp/contests/arc212'
-            },
-            {
-                id: 5,
-                platform: 'CodeForces',
-                name: 'Div 3 Round 1072',
-                time: new Date("2026-01-12T17:35:00"),
-                url: 'https://codeforces.com/contests'
-            },
-            {
-                id: 6,
-                platform: 'CodeChef',
-                name: 'Starters 221',
-                time: new Date("2026-01-14T20:00:00"),
-                url: 'https://www.codechef.com/contests'
-            },
-            {
-                id: 7,
-                platform: 'LeetCode',
-                name: 'Biweekly Contest 174',
-                time: new Date("2026-01-17T07:30:00"),
-                url: 'https://leetcode.com/contest/biweekly-contest-174/'
-            }
+            // Week 1-2 (Jan 8-17)
+            { id: 1, platform: 'AtCoder', name: 'Beginner Contest 440', time: new Date("2026-01-10T21:00:00"), url: 'https://atcoder.jp/contests/abc440' },
+            { id: 2, platform: 'LeetCode', name: 'Weekly Contest 484', time: new Date("2026-01-11T08:00:00"), url: 'https://leetcode.com/contest/weekly-contest-484/' },
+            { id: 3, platform: 'AtCoder', name: 'Regular Contest 212', time: new Date("2026-01-11T21:00:00"), url: 'https://atcoder.jp/contests/arc212' },
+            { id: 4, platform: 'CodeForces', name: 'Div 3 Round 1072', time: new Date("2026-01-12T17:35:00"), url: 'https://codeforces.com/contests' },
+            { id: 5, platform: 'CodeChef', name: 'Starters 221', time: new Date("2026-01-14T20:00:00"), url: 'https://www.codechef.com/contests' },
+            { id: 6, platform: 'CodeForces', name: 'Div 2 Round 1073', time: new Date("2026-01-15T20:35:00"), url: 'https://codeforces.com/contests' },
+            { id: 7, platform: 'LeetCode', name: 'Biweekly Contest 174', time: new Date("2026-01-17T07:30:00"), url: 'https://leetcode.com/contest/biweekly-contest-174/' },
+            { id: 8, platform: 'AtCoder', name: 'Beginner Contest 441', time: new Date("2026-01-17T21:00:00"), url: 'https://atcoder.jp/contests/abc441' },
+
+            // Week 3 (Jan 18-24)
+            { id: 9, platform: 'LeetCode', name: 'Weekly Contest 485', time: new Date("2026-01-18T08:00:00"), url: 'https://leetcode.com/contest/weekly-contest-485/' },
+            { id: 10, platform: 'CodeForces', name: 'Educational Round 178', time: new Date("2026-01-19T17:35:00"), url: 'https://codeforces.com/contests' },
+            { id: 11, platform: 'CodeChef', name: 'Starters 222', time: new Date("2026-01-21T20:00:00"), url: 'https://www.codechef.com/contests' },
+            { id: 12, platform: 'CodeForces', name: 'Div 1+2 Round 1074', time: new Date("2026-01-22T20:35:00"), url: 'https://codeforces.com/contests' },
+            { id: 13, platform: 'AtCoder', name: 'Beginner Contest 442', time: new Date("2026-01-24T21:00:00"), url: 'https://atcoder.jp/contests/abc442' },
+
+            // Week 4 (Jan 25-31)
+            { id: 14, platform: 'LeetCode', name: 'Weekly Contest 486', time: new Date("2026-01-25T08:00:00"), url: 'https://leetcode.com/contest/weekly-contest-486/' },
+            { id: 15, platform: 'CodeForces', name: 'Div 2 Round 1075', time: new Date("2026-01-26T17:35:00"), url: 'https://codeforces.com/contests' },
+            { id: 16, platform: 'CodeChef', name: 'Starters 223', time: new Date("2026-01-28T20:00:00"), url: 'https://www.codechef.com/contests' },
+            { id: 17, platform: 'LeetCode', name: 'Biweekly Contest 175', time: new Date("2026-01-31T07:30:00"), url: 'https://leetcode.com/contest/biweekly-contest-175/' },
+            { id: 18, platform: 'AtCoder', name: 'Beginner Contest 443', time: new Date("2026-01-31T21:00:00"), url: 'https://atcoder.jp/contests/abc443' },
+
+            // February Week 1 (Feb 1-7)
+            { id: 19, platform: 'LeetCode', name: 'Weekly Contest 487', time: new Date("2026-02-01T08:00:00"), url: 'https://leetcode.com/contest/weekly-contest-487/' },
+            { id: 20, platform: 'CodeForces', name: 'Div 3 Round 1076', time: new Date("2026-02-02T17:35:00"), url: 'https://codeforces.com/contests' },
+            { id: 21, platform: 'CodeChef', name: 'Starters 224', time: new Date("2026-02-04T20:00:00"), url: 'https://www.codechef.com/contests' },
+            { id: 22, platform: 'AtCoder', name: 'Regular Contest 213', time: new Date("2026-02-07T21:00:00"), url: 'https://atcoder.jp/contests/arc213' },
+            { id: 23, platform: 'AtCoder', name: 'Beginner Contest 444', time: new Date("2026-02-07T21:00:00"), url: 'https://atcoder.jp/contests/abc444' }
         ];
+
+        // Save fallback to cache too (prevent constant retries)
+        localStorage.setItem('codecal_cache', JSON.stringify(contests));
+        localStorage.setItem('codecal_cache_time', Date.now());
+
         renderContests();
     }
 }
