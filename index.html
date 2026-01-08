@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCal | Contest Notifier</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+    <!-- Background Effects -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="brand">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <span>CodeCal</span>
+            </div>
+
+            <button id="notifyBtn" class="glass-btn" onclick="handleAuthAction()">
+                <ion-icon name="notifications-outline" id="notifyIcon"></ion-icon>
+                <span id="notifyText">Enable Alerts</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="hero">
+                <h1>Upcoming <span class="gradient-text">Challenges</span></h1>
+                <p>Track. Compete. Win.</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-chip active" data-filter="all">All</button>
+                <button class="filter-chip" data-filter="LeetCode">LeetCode</button>
+                <button class="filter-chip" data-filter="CodeChef">CodeChef</button>
+                <button class="filter-chip" data-filter="GeeksforGeeks">GFG</button>
+                <button class="filter-chip" data-filter="CodeForces">CodeForces</button>
+                <button class="filter-chip" data-filter="AtCoder">AtCoder</button>
+                <div class="view-toggle">
+                    <button id="listViewBtn" class="toggle-btn active" onclick="switchView('list')"><ion-icon
+                            name="list-outline"></ion-icon></button>
+                    <button id="calendarViewBtn" class="toggle-btn" onclick="switchView('calendar')"><ion-icon
+                            name="calendar-outline"></ion-icon></button>
+                </div>
+            </div>
+
+            <div id="contestGrid" class="contest-grid">
+                <!-- Cards injected by JS -->
+            </div>
+
+            <div id="calendarView" class="calendar-container hidden">
+                <div class="calendar-header">
+                    <button class="glass-btn" onclick="changeMonth(-1)"><ion-icon
+                            name="chevron-back-outline"></ion-icon></button>
+                    <h2 id="currentMonthYear">January 2026</h2>
+                    <button class="glass-btn" onclick="changeMonth(1)"><ion-icon
+                            name="chevron-forward-outline"></ion-icon></button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar days injected by JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-content glass-panel"
+            style="max-width: 400px; margin: 10% auto; padding: 2rem; position: relative;">
+            <span class="close-btn" onclick="closeAuthModal()"
+                style="position: absolute; right: 20px; top: 15px; cursor: pointer; font-size: 1.5rem;">&times;</span>
+            <h2 style="margin-bottom: 1.5rem; text-align: center;">Get Notified</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Login to receive SMS & Push
+                alerts.</p>
+
+            <div class="input-group">
+                <ion-icon name="call-outline"></ion-icon>
+                <input type="tel" id="phoneNumber" placeholder="+91 9999999999"
+                    style="width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); padding: 1rem 1rem 1rem 3rem; border-radius: 12px; color: white;">
+            </div>
+            <button class="glass-btn full-width primary-btn" onclick="handlePhoneLogin()"
+                style="width: 100%; margin-top: 1rem; justify-content: center;">Send OTP</button>
+            <div id="recaptcha-container"></div>
+
+            <div class="divider" style="margin: 1.5rem 0; text-align: center; color: gray;">OPTIONS</div>
+
+            <button class="glass-btn full-width google-btn" onclick="handleGoogleLogin()"
+                style="width: 100%; justify-content: center; background: white; color: black;">
+                <ion-icon name="logo-google"></ion-icon> Sign in with Google
+            </button>
+        </div>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div id="customAlertModal" class="modal hidden">
+        <div class="glass-alert">
+            <div class="alert-icon-box">
+                <ion-icon name="notifications"></ion-icon>
+            </div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Notification</h3>
+            <p id="alertMessage" style="color: var(--text-muted); line-height: 1.5;">Message goes here...</p>
+            <button class="alert-btn" onclick="closeCustomAlert()">Got it</button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDBqNvvW7bSnppOeKd1eGQRrP85I8h4Dns",
+            authDomain: "codecal-79cf5.firebaseapp.com",
+            projectId: "codecal-79cf5",
+            storageBucket: "codecal-79cf5.firebasestorage.app",
+            messagingSenderId: "708951104136",
+            appId: "1:708951104136:web:56f92d5484ad66a6189d3d",
+            measurementId: "G-2CBXQTEP6Z"
+        };
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, RecaptchaVerifier, signInWithPhoneNumber, onAuthStateChanged }
+            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Helper: Save User to Firestore
+        async function saveUserToDB(user, extraData = {}) {
+            try {
+                await setDoc(doc(db, "users", user.uid), {
+                    displayName: user.displayName || "User",
+                    email: user.email || extraData.email || "",
+                    phoneNumber: user.phoneNumber || extraData.phoneNumber || "",
+                    uid: user.uid,
+                    lastLogin: new Date().toISOString(),
+                    preferences: {
+                        notifyEmail: true,
+                        notifySms: true,
+                        notify30m: true,
+                        notify10m: true
+                    }
+                }, { merge: true });
+                console.log("User data saved.");
+            } catch (e) {
+                console.error("Error saving user:", e);
+            }
+        }
+
+        // --- CUSTOM ALERT LOGIC ---
+        window.showCustomAlert = (msg) => {
+            document.getElementById('alertMessage').innerText = msg;
+            document.getElementById('customAlertModal').classList.remove('hidden');
+        };
+
+        window.closeCustomAlert = () => {
+            document.getElementById('customAlertModal').classList.add('hidden');
+        };
+
+        // Expose functions to window
+        window.openAuthModal = () => {
+            document.getElementById('authModal').classList.remove('hidden');
+            // Init Recaptcha
+            if (!window.recaptchaVerifier) {
+                window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { 'size': 'invisible' });
+            }
+        };
+
+        window.closeAuthModal = () => {
+            document.getElementById('authModal').classList.add('hidden');
+        };
+
+        window.handleAuthAction = () => {
+            if (auth.currentUser) {
+                showCustomAlert("You are subscribed! We will notify you at your registered contact.");
+            } else {
+                window.openAuthModal();
+            }
+        };
+
+        window.handleGoogleLogin = async () => {
+            const provider = new GoogleAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                await saveUserToDB(result.user);
+                window.closeAuthModal();
+                showCustomAlert("Successfully subscribed with Google!");
+            } catch (err) { showCustomAlert(err.message); }
+        };
+
+        window.handlePhoneLogin = async () => {
+            const phone = document.getElementById('phoneNumber').value;
+            try {
+                window.confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
+                const code = prompt("Enter OTP sent to your phone:");
+                if (code) {
+                    const result = await window.confirmationResult.confirm(code);
+                    const email = prompt("Subscription Active! Please enter your Email for notifications:");
+                    await saveUserToDB(result.user, { email: email });
+                    window.closeAuthModal();
+                    showCustomAlert("Successfully subscribed!");
+                }
+            } catch (err) { showCustomAlert("Error: " + err.message); }
+        }
+
+        // Auth State Listener
+        onAuthStateChanged(auth, (user) => {
+            const btn = document.getElementById('notifyBtn');
+            const text = document.getElementById('notifyText');
+            if (user) {
+                text.innerText = "Alerts Active";
+                btn.style.borderColor = 'var(--primary)';
+                saveUserToDB(user);
+            } else {
+                text.innerText = "Enable Alerts";
+                btn.style.borderColor = 'var(--glass-border)';
+            }
+        });
+    </script>
+</body>
+
+</html>
