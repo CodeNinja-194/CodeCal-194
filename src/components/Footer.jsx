@@ -26,7 +26,7 @@ function Footer() {
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/Codeninja-194/CodeCal" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/Codeninja-194/CodeCal-194" target="_blank" rel="noopener noreferrer">
                                 <ion-icon name="star-outline"></ion-icon>
                                 Star on GitHub
                             </a>
