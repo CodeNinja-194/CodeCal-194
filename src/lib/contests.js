@@ -1,5 +1,4 @@
-// Fallback contest data
-const fallbackContests = [
+export const fallbackContests = [
     // Week 1-2 (Jan 8-17)
     { id: 1, platform: 'AtCoder', name: 'Beginner Contest 440', time: new Date("2026-01-10T21:00:00"), url: 'https://atcoder.jp/contests/abc440' },
     { id: 2, platform: 'LeetCode', name: 'Weekly Contest 484', time: new Date("2026-01-11T08:00:00"), url: 'https://leetcode.com/contest/weekly-contest-484/' },

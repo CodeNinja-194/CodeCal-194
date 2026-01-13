@@ -8,11 +8,13 @@ import AuthModal from './components/AuthModal';
 import AlertModal from './components/AlertModal';
 import StatCards from './components/StatCards';
 import Footer from './components/Footer';
-import { fetchContests } from './lib/contests';
+import { fetchContests, fallbackContests } from './lib/contests';
 
 function App() {
-    const [contests, setContests] = createSignal([]);
-    const [filteredContests, setFilteredContests] = createSignal([]);
+    // Show fallback data immediately for "milliseconds" load time
+    const initialData = fallbackContests.map(c => ({ ...c, time: new Date(c.time) }));
+    const [contests, setContests] = createSignal(initialData);
+    const [filteredContests, setFilteredContests] = createSignal(initialData);
     const [activeFilter, setActiveFilter] = createSignal('all');
     const [view, setView] = createSignal('list');
     const [currentMonth, setCurrentMonth] = createSignal(new Date());
@@ -20,6 +22,7 @@ function App() {
     const [alertMessage, setAlertMessage] = createSignal('');
     const [showAlert, setShowAlert] = createSignal(false);
     const [isSubscribed, setIsSubscribed] = createSignal(false);
+    const [isSyncing, setIsSyncing] = createSignal(false);
 
     const showCustomAlert = (msg) => {
         setAlertMessage(msg);
@@ -34,9 +37,11 @@ function App() {
         }
 
         // Fetch contests
+        setIsSyncing(true);
         const data = await fetchContests();
         setContests(data);
         setFilteredContests(data);
+        setIsSyncing(false);
     });
 
     const handleFilter = (platform) => {
@@ -64,6 +69,7 @@ function App() {
             <div class="app-container">
                 <Header
                     isSubscribed={isSubscribed()}
+                    isSyncing={isSyncing()}
                     onEnableAlerts={() => isSubscribed() ? showCustomAlert("You are already subscribed!") : setShowAuthModal(true)}
                 />
 
