@@ -4,14 +4,6 @@
     "framework": "vite",
     "crons": [
         {
-            "path": "/api/notify",
-            "schedule": "*/30 * * * *"
-        },
-        {
-            "path": "/api/monthly-update",
-            "schedule": "0 8 1,15 * *"
-        },
-        {
             "path": "/api/refresh-contests",
             "schedule": "0 0 * * *"
         }
