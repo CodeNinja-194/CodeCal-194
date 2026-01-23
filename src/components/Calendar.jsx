@@ -57,37 +57,51 @@ function Calendar(props) {
 
             <div class="calendar-grid">
                 <For each={calendarDays()}>
-                    {(dayData) => (
-                        <div class={`calendar-day ${dayData.day ? '' : 'empty'} ${dayData.contests.length > 0 ? 'has-contest' : ''}`}>
-                            {dayData.day && (
-                                <>
-                                    <span class="day-number">{dayData.day}</span>
-                                    <For each={dayData.contests.slice(0, 3)}>
-                                        {(contest) => (
-                                            <div class="contest-marker-container">
-                                                <div class={`contest-marker marker-${contest.platform.toLowerCase()}`}>
-                                                    {contest.name.substring(0, 15)}...
-                                                </div>
-                                                <div class="contest-tooltip">
-                                                    <div class="tooltip-title">{contest.name}</div>
-                                                    <div class="tooltip-time">
-                                                        <ion-icon name="time-outline"></ion-icon>
-                                                        {contest.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    {(dayData) => {
+                        const isPast = dayData.day && new Date(props.currentMonth.getFullYear(), props.currentMonth.getMonth(), dayData.day) < new Date().setHours(0, 0, 0, 0);
+
+                        return (
+                            <div class={`calendar-day ${dayData.day ? '' : 'empty'} ${dayData.contests.length > 0 ? 'has-contest' : ''} ${isPast ? 'past-day' : ''}`}
+                                onClick={() => dayData.day && console.log(`Selected day ${dayData.day}`)}>
+                                {dayData.day && (
+                                    <>
+                                        <div class="day-header">
+                                            <span class="day-number">{dayData.day}</span>
+                                            {dayData.contests.length > 0 && <span class="contest-count-badge">{dayData.contests.length}</span>}
+                                        </div>
+                                        <div class="simple-contest-list">
+                                            <For each={dayData.contests.slice(0, 4)}>
+                                                {(contest) => (
+                                                    <div class={`simple-marker marker-${contest.platform.toLowerCase()}`} title={contest.name}>
+                                                        <span class="dot"></span>
+                                                        <span class="name">{contest.name}</span>
                                                     </div>
-                                                    <a href={contest.url} target="_blank" rel="noopener noreferrer" class="tooltip-link">
-                                                        View Contest
-                                                    </a>
-                                                </div>
+                                                )}
+                                            </For>
+                                            {dayData.contests.length > 4 && (
+                                                <div class="more-indicator">+{dayData.contests.length - 4}</div>
+                                            )}
+                                        </div>
+
+                                        {/* Simplified Hover Info */}
+                                        <div class="day-info-mini">
+                                            <div class="mini-header">Contests on {dayData.day}</div>
+                                            <div class="mini-list">
+                                                <For each={dayData.contests}>
+                                                    {(c) => (
+                                                        <a href={c.url} target="_blank" class="mini-item">
+                                                            <span class={`indicator indicator-${c.platform.toLowerCase()}`}></span>
+                                                            <span class="m-name">{c.name}</span>
+                                                        </a>
+                                                    )}
+                                                </For>
                                             </div>
-                                        )}
-                                    </For>
-                                    {dayData.contests.length > 3 && (
-                                        <div class="more-contests">+{dayData.contests.length - 3} more</div>
-                                    )}
-                                </>
-                            )}
-                        </div>
-                    )}
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        );
+                    }}
                 </For>
             </div>
         </div>

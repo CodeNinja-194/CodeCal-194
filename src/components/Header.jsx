@@ -41,14 +41,9 @@ function Header(props) {
                         <span>GitHub</span>
                     </a>
 
-                    <button class="nav-item" onClick={toggleTheme} title="Toggle theme" style="background: none; border: none; cursor: pointer;">
+                    <button class="nav-item theme-btn" onClick={toggleTheme} title="Toggle theme" style="background: none; border: none; cursor: pointer;">
                         <ion-icon name={theme() === 'light' ? 'moon-outline' : 'sunny-outline'}></ion-icon>
                         <span>{theme() === 'light' ? 'Dark' : 'Light'}</span>
-                    </button>
-
-                    <button class="nav-item active" onClick={props.onEnableAlerts} style="border: none; cursor: pointer;">
-                        <ion-icon name="notifications-outline"></ion-icon>
-                        <span>{props.isSubscribed ? "Active" : "Alerts"}</span>
                     </button>
                 </div>
             </nav>

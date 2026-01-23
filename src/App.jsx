@@ -1,77 +1,73 @@
-import { createSignal, onMount, For, Show } from 'solid-js';
+import { createSignal, onMount, For, Show, createMemo } from 'solid-js';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Filters from './components/Filters';
 import ContestGrid from './components/ContestGrid';
 import Calendar from './components/Calendar';
-import AuthModal from './components/AuthModal';
-import AlertModal from './components/AlertModal';
 import StatCards from './components/StatCards';
+import ContestFlux from './components/ContestFlux';
+import PlatformIntensity from './components/PlatformIntensity';
+import PracticeZenith from './components/PracticeZenith';
 import Footer from './components/Footer';
 import { fetchContests, fallbackContests } from './lib/contests';
 
 function App() {
-    // Show fallback data immediately for "milliseconds" load time
     const initialData = fallbackContests.map(c => ({ ...c, time: new Date(c.time) }));
     const [contests, setContests] = createSignal(initialData);
-    const [filteredContests, setFilteredContests] = createSignal(initialData);
     const [activeFilter, setActiveFilter] = createSignal('all');
     const [view, setView] = createSignal('list');
     const [currentMonth, setCurrentMonth] = createSignal(new Date());
-    const [showAuthModal, setShowAuthModal] = createSignal(false);
-    const [alertMessage, setAlertMessage] = createSignal('');
-    const [showAlert, setShowAlert] = createSignal(false);
-    const [isSubscribed, setIsSubscribed] = createSignal(false);
     const [isSyncing, setIsSyncing] = createSignal(false);
+    const [searchQuery, setSearchQuery] = createSignal('');
 
-    const showCustomAlert = (msg) => {
-        setAlertMessage(msg);
-        setShowAlert(true);
+    const refreshData = async () => {
+        setIsSyncing(true);
+        localStorage.removeItem('codecal_cache'); // Clear cache
+        const data = await fetchContests();
+        setContests(data);
+        setIsSyncing(false);
     };
 
     onMount(async () => {
-        // Check if user is already subscribed
-        const savedEmail = localStorage.getItem('codecal_subscribed');
-        if (savedEmail) {
-            setIsSubscribed(true);
-        }
-
-        // Fetch contests
         setIsSyncing(true);
         const data = await fetchContests();
         setContests(data);
-        setFilteredContests(data);
         setIsSyncing(false);
     });
 
     const handleFilter = (platform) => {
         setActiveFilter(platform);
-        if (platform === 'all') {
-            setFilteredContests(contests());
-        } else {
-            setFilteredContests(contests().filter(c => c.platform === platform));
-        }
     };
 
-    const handleSubscribe = (user) => {
-        setIsSubscribed(true);
-        setShowAuthModal(false);
-        showCustomAlert("Successfully subscribed!");
+    const handleSearch = (query) => {
+        setSearchQuery(query.toLowerCase());
     };
+
+    const displayedContests = createMemo(() => {
+        let filtered = contests();
+
+        if (activeFilter() !== 'all') {
+            filtered = filtered.filter(c => c.platform === activeFilter());
+        }
+
+        if (searchQuery()) {
+            filtered = filtered.filter(c =>
+                c.name.toLowerCase().includes(searchQuery()) ||
+                c.platform.toLowerCase().includes(searchQuery())
+            );
+        }
+
+        return filtered;
+    });
 
     return (
         <>
-            {/* Background Effects */}
             <div class="glow-orb orb-1"></div>
             <div class="glow-orb orb-2"></div>
             <div class="grid-overlay"></div>
 
             <div class="app-container">
-                <Header
-                    isSubscribed={isSubscribed()}
-                    isSyncing={isSyncing()}
-                    onEnableAlerts={() => isSubscribed() ? showCustomAlert("You are already subscribed!") : setShowAuthModal(true)}
-                />
+                <Header isSyncing={isSyncing()} onRefresh={refreshData} />
 
                 <main>
                     <Hero />
@@ -79,47 +75,36 @@ function App() {
                     <Filters
                         activeFilter={activeFilter()}
                         onFilter={handleFilter}
+                        onSearch={handleSearch}
                         view={view()}
                         onViewChange={setView}
-                        showPlatformFilters={false}
+                        showPlatformFilters={true}
                     />
 
                     <Show when={view() === 'list'}>
-                        <StatCards contests={contests()} />
+                        <StatCards contests={displayedContests()} />
                         <ContestGrid
-                            contests={contests()}
+                            contests={displayedContests()}
                             activeFilter={activeFilter()}
-                            onFilter={handleFilter}
                         />
                     </Show>
 
                     <Show when={view() === 'calendar'}>
-                        <StatCards contests={contests()} />
+                        <StatCards contests={displayedContests()} />
                         <Calendar
-                            contests={contests()}
+                            contests={displayedContests()}
                             currentMonth={currentMonth()}
                             onMonthChange={setCurrentMonth}
                         />
                     </Show>
+
+                    <ContestFlux contests={contests()} />
+                    <PracticeZenith contests={contests()} />
+                    <PlatformIntensity contests={contests()} />
                 </main>
 
                 <Footer />
             </div>
-
-            <Show when={showAuthModal()}>
-                <AuthModal
-                    onClose={() => setShowAuthModal(false)}
-                    onSuccess={handleSubscribe}
-                    showAlert={showCustomAlert}
-                />
-            </Show>
-
-            <Show when={showAlert()}>
-                <AlertModal
-                    message={alertMessage()}
-                    onClose={() => setShowAlert(false)}
-                />
-            </Show>
         </>
     );
 }

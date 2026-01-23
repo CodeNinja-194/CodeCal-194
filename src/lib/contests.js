@@ -33,8 +33,6 @@ export const fallbackContests = [
 
 export async function fetchContests() {
     const ONE_HOUR = 60 * 60 * 1000;
-    const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-    const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
 
     // Check cache first
     const cachedData = localStorage.getItem('codecal_cache');
@@ -43,12 +41,12 @@ export async function fetchContests() {
     if (cachedData && cacheTime && (Date.now() - parseInt(cacheTime) < ONE_HOUR)) {
         const contests = JSON.parse(cachedData);
         contests.forEach(c => c.time = new Date(c.time));
-        return filterContestsByTimeRange(contests);
+        return sortContests(contests);
     }
 
     try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
 
         const response = await fetch('https://kontests.net/api/v1/all', {
             signal: controller.signal
@@ -57,88 +55,44 @@ export async function fetchContests() {
 
         const data = await response.json();
 
-        const apiContests = data.filter(c =>
-            ['LeetCode', 'CodeChef', 'CodeForces', 'AtCoder'].includes(c.site) ||
-            c.url.includes('leetcode') || c.url.includes('codechef') ||
-            c.url.includes('codeforces') || c.url.includes('atcoder')
-        ).map((c, index) => ({
+        const apiContests = data.map((c, index) => ({
             id: index + 100,
             platform: c.site || 'Other',
             name: c.name,
             time: new Date(c.start_time),
-            duration: parseDuration(c.duration), // Store duration for accurate status
+            duration: parseDuration(c.duration),
             url: c.url
         }));
 
-        // Filter and sort contests
-        const contests = filterContestsByTimeRange(apiContests);
+        const allContests = [...apiContests];
+        if (allContests.length === 0) throw new Error("No data");
 
         // Cache results
         localStorage.setItem('codecal_cache', JSON.stringify(apiContests));
         localStorage.setItem('codecal_cache_time', Date.now().toString());
 
-        return contests;
+        return sortContests(allContests);
     } catch (error) {
         console.error("Fetch failed:", error);
-        // Use fallback and filter
-        const filtered = filterContestsByTimeRange(fallbackContests);
-        localStorage.setItem('codecal_cache', JSON.stringify(fallbackContests));
-        localStorage.setItem('codecal_cache_time', Date.now().toString());
-        return filtered;
+        return sortContests(fallbackContests);
     }
+}
+
+function sortContests(contests) {
+    return contests.sort((a, b) => {
+        const aTime = a.time instanceof Date ? a.time : new Date(a.time);
+        const bTime = b.time instanceof Date ? b.time : new Date(b.time);
+        return aTime - bTime;
+    });
 }
 
 // Parse duration string to milliseconds (e.g., "02:00:00" -> 7200000)
 function parseDuration(durationStr) {
-    if (!durationStr) return 2 * 60 * 60 * 1000; // Default 2 hours
+    if (!durationStr) return 2 * 60 * 60 * 1000;
+    if (typeof durationStr === 'number') return durationStr * 1000;
     const parts = durationStr.split(':').map(Number);
     if (parts.length === 3) {
         return (parts[0] * 3600 + parts[1] * 60 + parts[2]) * 1000;
     }
-    return 2 * 60 * 60 * 1000; // Default 2 hours
-}
-
-// Filter contests: show upcoming (within 30 days) and recently ended (within 24 hours)
-function filterContestsByTimeRange(contests) {
-    const now = new Date();
-    const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-    const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
-
-    return contests.filter(c => {
-        const contestTime = c.time instanceof Date ? c.time : new Date(c.time);
-        const timeDiff = contestTime - now;
-        const duration = c.duration || 2 * 60 * 60 * 1000;
-        const contestEndTime = new Date(contestTime.getTime() + duration);
-        const timeSinceEnd = now - contestEndTime;
-
-        // Include if: upcoming within 30 days OR ended within last 24 hours
-        const isUpcoming = timeDiff > 0 && timeDiff <= THIRTY_DAYS;
-        const isRecentlyEnded = timeSinceEnd > 0 && timeSinceEnd <= TWENTY_FOUR_HOURS;
-        const isLive = timeDiff <= 0 && timeSinceEnd <= 0;
-
-        return isUpcoming || isRecentlyEnded || isLive;
-    }).sort((a, b) => {
-        // Sort: Live first, then upcoming by time, then ended
-        const now = new Date();
-        const aTime = a.time instanceof Date ? a.time : new Date(a.time);
-        const bTime = b.time instanceof Date ? b.time : new Date(b.time);
-        const aDuration = a.duration || 2 * 60 * 60 * 1000;
-        const bDuration = b.duration || 2 * 60 * 60 * 1000;
-
-        const aEnded = now > new Date(aTime.getTime() + aDuration);
-        const bEnded = now > new Date(bTime.getTime() + bDuration);
-        const aLive = aTime <= now && !aEnded;
-        const bLive = bTime <= now && !bEnded;
-
-        // Live contests first
-        if (aLive && !bLive) return -1;
-        if (!aLive && bLive) return 1;
-
-        // Ended contests last
-        if (aEnded && !bEnded) return 1;
-        if (!aEnded && bEnded) return -1;
-
-        // Sort by time
-        return aTime - bTime;
-    });
+    return 2 * 60 * 60 * 1000;
 }

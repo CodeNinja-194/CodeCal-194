@@ -9,7 +9,6 @@
     },
     "dependencies": {
         "i": "^0.3.7",
-        "nodemailer": "^7.0.12",
         "solid-js": "^1.8.11",
         "vercel": "^50.3.0"
     },
