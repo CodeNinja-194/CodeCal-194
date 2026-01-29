@@ -92,7 +92,7 @@ function ContestCard(props) {
             <div class="join-btn-placeholder">
                 <button class="join-btn">
                     <ion-icon name="open-outline"></ion-icon>
-                    {status.class === 'status-ended' ? 'View Problems' : 'Join Contest'}
+                    {status.class === 'status-ended' ? 'View Problems' : 'Join Challenge'}
                 </button>
             </div>
         </div>
@@ -130,14 +130,19 @@ function ContestGrid(props) {
         // Filter for display: Contests ended in last 24h
         let displayEnded = ended.filter(c => now - new Date(c.time.getTime() + (c.duration || 2 * 60 * 60 * 1000)) < 24 * 60 * 60 * 1000);
 
-        // If nothing ended in last 24h, grab the most recent one for each platform
-        if (displayEnded.length === 0) {
-            const majorPlatforms = ['LeetCode', 'CodeForces', 'CodeChef', 'AtCoder'];
-            majorPlatforms.forEach(p => {
-                const last = ended.filter(c => c.platform === p).sort((a, b) => b.time - a.time)[0];
-                if (last) displayEnded.push(last);
-            });
-        }
+        // Always ensure we have at least the most recent one for each platform if 'all' is selected
+        // or the most recent one for the specific platform if filtered
+        const lookForPlatforms = props.activeFilter === 'all'
+            ? ['LeetCode', 'CodeForces', 'CodeChef', 'AtCoder']
+            : [props.activeFilter];
+
+        lookForPlatforms.forEach(p => {
+            const hasRecent = displayEnded.some(c => c.platform === p);
+            if (!hasRecent) {
+                const platformPast = ended.filter(c => c.platform === p).sort((a, b) => b.time - a.time)[0];
+                if (platformPast) displayEnded.push(platformPast);
+            }
+        });
 
         return {
             live,
@@ -172,12 +177,12 @@ function ContestGrid(props) {
                     categorized().upcoming.length === 0 &&
                     (props.activeFilter !== 'all' || props.contests.length > 0)
                 }>
-                    <div class="no-contests">No upcoming contests found.</div>
+                    <div class="no-contests">No upcoming challenges found.</div>
                 </Show>
             </div>
 
             <div class="ended-side" id="ended-section">
-                <h2 class="section-title">Previous Contests</h2>
+                <h2 class="section-title">Previous Challenges</h2>
                 <div class="contest-grid ended-grid">
                     <For each={categorized().ended}>
                         {(c) => <ContestCard contest={c} />}

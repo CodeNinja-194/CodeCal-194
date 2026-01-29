@@ -4,7 +4,7 @@
     "framework": "vite",
     "crons": [
         {
-            "path": "/api/refresh-contests",
+            "path": "/api/refresh",
             "schedule": "0 0 * * *"
         }
     ]

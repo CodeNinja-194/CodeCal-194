@@ -8,6 +8,11 @@ function PracticeZenith(props) {
         target: '300 PROBLEMS'
     };
 
+    const navigateToPractice = () => {
+        window.history.pushState({}, '', '/practice');
+        window.dispatchEvent(new Event('navigation'));
+    };
+
     return (
         <div class="zenith-nexus codeninja-section">
             <div class="zenith-header">
@@ -39,7 +44,7 @@ function PracticeZenith(props) {
                             </div>
                         </div>
 
-                        <button class="mastery-launch-btn">
+                        <button class="mastery-launch-btn" onClick={navigateToPractice}>
                             <span>Begin Practice Session</span>
                             <div class="btn-flare"></div>
                         </button>

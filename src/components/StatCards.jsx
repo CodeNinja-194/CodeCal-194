@@ -92,7 +92,7 @@ function StatCards(props) {
                     </div>
                     <div class="card-main">
                         <div class="stat-value-big">{stats().liveCount}</div>
-                        <div class="stat-label-new">ONGOING CONTESTS</div>
+                        <div class="stat-label-new">ONGOING CHALLENGES</div>
                     </div>
                     <div class="card-bg-icon">
                         <ion-icon name="pulse"></ion-icon>
@@ -165,7 +165,7 @@ function StatCards(props) {
                     </div>
                     <div class="card-main">
                         <div class="stat-value-big">{stats().todaysCount}</div>
-                        <div class="stat-label-new">CONTESTS SCHEDULED</div>
+                        <div class="stat-label-new">CHALLENGES SCHEDULED</div>
                     </div>
                     <div class="card-bg-icon">
                         <ion-icon name="rocket-outline"></ion-icon>

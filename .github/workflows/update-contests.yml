@@ -1,0 +1,27 @@
+name: Auto Update Contests
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:       # manual run button
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch contests from API
+        run: |
+          curl https://codecal-194.vercel.app/api/refresh \
+          > public/contests.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "codecal-bot"
+          git config user.email "bot@codecal.dev"
+          git add public/contests.json
+          git commit -m "auto: update contests" || echo "No changes"
+          git push

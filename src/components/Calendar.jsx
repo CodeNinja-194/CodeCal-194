@@ -85,7 +85,7 @@ function Calendar(props) {
 
                                         {/* Simplified Hover Info */}
                                         <div class="day-info-mini">
-                                            <div class="mini-header">Contests on {dayData.day}</div>
+                                            <div class="mini-header">Challenges on {dayData.day}</div>
                                             <div class="mini-list">
                                                 <For each={dayData.contests}>
                                                     {(c) => (

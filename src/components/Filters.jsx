@@ -9,7 +9,7 @@ function Filters(props) {
                 <ion-icon name="search-outline"></ion-icon>
                 <input
                     type="text"
-                    placeholder="Search contests..."
+                    placeholder="Search challenges..."
                     onInput={(e) => props.onSearch(e.currentTarget.value)}
                     class="search-input"
                 />

@@ -55,10 +55,9 @@ export default async function handler(req, res) {
         // In a real app, you'd save this to a database or KV store
         // For now, we return it to whoever called the cron/refresh
         res.status(200).json({
-            success: true,
             updated_at: new Date().toISOString(),
             count: uniqueContests.length,
-            contests: uniqueContests.slice(0, 50)
+            contests: uniqueContests
         });
     } catch (error) {
         console.error("Refresh failed:", error);

@@ -8,6 +8,7 @@ import StatCards from './components/StatCards';
 import ContestFlux from './components/ContestFlux';
 import PlatformIntensity from './components/PlatformIntensity';
 import PracticeZenith from './components/PracticeZenith';
+import PracticeSheet from './components/PracticeSheet';
 import Footer from './components/Footer';
 import { fetchContests, fallbackContests } from './lib/contests';
 
@@ -19,6 +20,7 @@ function App() {
     const [currentMonth, setCurrentMonth] = createSignal(new Date());
     const [isSyncing, setIsSyncing] = createSignal(false);
     const [searchQuery, setSearchQuery] = createSignal('');
+    const [currentPath, setCurrentPath] = createSignal(window.location.pathname);
 
     const refreshData = async () => {
         setIsSyncing(true);
@@ -33,6 +35,15 @@ function App() {
         const data = await fetchContests();
         setContests(data);
         setIsSyncing(false);
+
+        // Listen for path changes
+        const handlePathChange = () => setCurrentPath(window.location.pathname);
+        window.addEventListener('popstate', handlePathChange);
+        window.addEventListener('navigation', handlePathChange);
+        return () => {
+            window.removeEventListener('popstate', handlePathChange);
+            window.removeEventListener('navigation', handlePathChange);
+        };
     });
 
     const handleFilter = (platform) => {
@@ -60,6 +71,8 @@ function App() {
         return filtered;
     });
 
+    const isPracticePage = createMemo(() => currentPath() === '/practice');
+
     return (
         <>
             <div class="glow-orb orb-1"></div>
@@ -69,41 +82,50 @@ function App() {
             <div class="app-container">
                 <Header isSyncing={isSyncing()} onRefresh={refreshData} />
 
-                <main>
-                    <Hero />
+                <Show when={isPracticePage()}>
+                    <main class="practice-main">
+                        <PracticeSheet />
+                    </main>
+                    <Footer />
+                </Show>
 
-                    <Filters
-                        activeFilter={activeFilter()}
-                        onFilter={handleFilter}
-                        onSearch={handleSearch}
-                        view={view()}
-                        onViewChange={setView}
-                        showPlatformFilters={true}
-                    />
+                <Show when={!isPracticePage()}>
+                    <main>
+                        <Hero />
 
-                    <Show when={view() === 'list'}>
-                        <StatCards contests={displayedContests()} />
-                        <ContestGrid
-                            contests={displayedContests()}
+                        <Filters
                             activeFilter={activeFilter()}
+                            onFilter={handleFilter}
+                            onSearch={handleSearch}
+                            view={view()}
+                            onViewChange={setView}
+                            showPlatformFilters={true}
                         />
-                    </Show>
 
-                    <Show when={view() === 'calendar'}>
-                        <StatCards contests={displayedContests()} />
-                        <Calendar
-                            contests={displayedContests()}
-                            currentMonth={currentMonth()}
-                            onMonthChange={setCurrentMonth}
-                        />
-                    </Show>
+                        <Show when={view() === 'list'}>
+                            <StatCards contests={displayedContests()} />
+                            <ContestGrid
+                                contests={displayedContests()}
+                                activeFilter={activeFilter()}
+                            />
+                        </Show>
 
-                    <ContestFlux contests={contests()} />
-                    <PracticeZenith contests={contests()} />
-                    <PlatformIntensity contests={contests()} />
-                </main>
+                        <Show when={view() === 'calendar'}>
+                            <StatCards contests={displayedContests()} />
+                            <Calendar
+                                contests={displayedContests()}
+                                currentMonth={currentMonth()}
+                                onMonthChange={setCurrentMonth}
+                            />
+                        </Show>
 
-                <Footer />
+                        <ContestFlux contests={contests()} />
+                        <PracticeZenith contests={contests()} />
+                        <PlatformIntensity contests={contests()} />
+                    </main>
+
+                    <Footer />
+                </Show>
             </div>
         </>
     );

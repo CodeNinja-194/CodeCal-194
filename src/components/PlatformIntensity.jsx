@@ -4,12 +4,32 @@ function PlatformIntensity(props) {
     const intensityData = createMemo(() => {
         const platforms = ['LeetCode', 'CodeForces', 'CodeChef', 'AtCoder'];
         const counts = {};
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+        const nextMonth = (currentMonth + 1) % 12;
+        const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
 
         platforms.forEach(p => counts[p] = 0);
-        props.contests.forEach(c => {
+        
+        // Filter contests for current month and next month only
+        const filteredContests = props.contests.filter(c => {
+            const contestDate = new Date(c.time);
+            const contestMonth = contestDate.getMonth();
+            const contestYear = contestDate.getFullYear();
+            
+            return (contestMonth === currentMonth && contestYear === currentYear) ||
+                   (contestMonth === nextMonth && contestYear === nextYear);
+        });
+
+        filteredContests.forEach(c => {
             if (counts.hasOwnProperty(c.platform)) {
                 counts[c.platform]++;
             }
+        });
+
+        // Limit to 6 contests per platform
+        Object.keys(counts).forEach(platform => {
+            counts[platform] = Math.min(counts[platform], 6);
         });
 
         const total = Math.max(...Object.values(counts), 1);
@@ -67,7 +87,7 @@ function PlatformIntensity(props) {
                                 </div>
                                 <div class="cell-stats">
                                     <span class="c-count">{platform.count}</span>
-                                    <span class="c-label">CONTESTS THIS MONTH</span>
+                                    <span class="c-label">CONTESTS (CURRENT & NEXT MONTH)</span>
                                 </div>
                             </div>
                         </div>
