@@ -127,20 +127,33 @@ function ContestGrid(props) {
             }
         });
 
-        // Filter for display: Contests ended in last 24h
-        let displayEnded = ended.filter(c => now - new Date(c.time.getTime() + (c.duration || 2 * 60 * 60 * 1000)) < 24 * 60 * 60 * 1000);
+        // Filter for display: Contests ended in last 7 days
+        // We use a more generous window to keep the "Previous Challenges" section populated
+        let displayEnded = ended.filter(c => {
+            const contestEndTime = new Date(c.time.getTime() + (c.duration || 2 * 60 * 60 * 1000));
+            return (now - contestEndTime) < 7 * 24 * 60 * 60 * 1000;
+        });
 
-        // Always ensure we have at least the most recent one for each platform if 'all' is selected
-        // or the most recent one for the specific platform if filtered
-        const lookForPlatforms = props.activeFilter === 'all'
-            ? ['LeetCode', 'CodeForces', 'CodeChef', 'AtCoder']
+        // Always ensure we have at least TWO most recent ones for each platform if 'all' is selected
+        // to make the "Previous Challenges" section look populated and helpful across all sites.
+        const majorPlatforms = ['LeetCode', 'CodeForces', 'CodeChef', 'AtCoder'];
+        const targetPlatforms = props.activeFilter === 'all'
+            ? majorPlatforms
             : [props.activeFilter];
 
-        lookForPlatforms.forEach(p => {
-            const hasRecent = displayEnded.some(c => c.platform === p);
-            if (!hasRecent) {
-                const platformPast = ended.filter(c => c.platform === p).sort((a, b) => b.time - a.time)[0];
-                if (platformPast) displayEnded.push(platformPast);
+        targetPlatforms.forEach(p => {
+            // Find all past contests for this specific platform (case-insensitive)
+            const platformPastAll = ended.filter(c => c.platform.toLowerCase() === p.toLowerCase())
+                .sort((a, b) => b.time - a.time);
+
+            // Ensure we show at least 2 past contests for each major platform
+            for (let i = 0; i < 2; i++) {
+                if (platformPastAll[i]) {
+                    // Avoid duplicates if they were already added by the 7-day filter
+                    if (!displayEnded.some(c => c.id === platformPastAll[i].id)) {
+                        displayEnded.push(platformPastAll[i]);
+                    }
+                }
             }
         });
 

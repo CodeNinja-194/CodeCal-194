@@ -62,13 +62,19 @@ export async function fetchContests() {
         const response = await fetch('/contests.json');
         if (response.ok) {
             const data = await response.json();
-            if (data && data.contests && data.contests.length > 0) {
+            if (data && data.contests) {
                 console.log("Fetched contests from automation source.");
-                return sortContests(data.contests.map(c => ({
+                const fileContests = data.contests.map(c => ({
                     ...c,
                     time: new Date(c.time),
                     id: c.id || Math.random()
-                })));
+                }));
+
+                // Merge with fallbacks to ensure history
+                const merged = [...fileContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
+                const unique = Array.from(new Map(merged.map(c => [c.name + (c.time instanceof Date ? c.time.getTime() : new Date(c.time).getTime()), c])).values());
+
+                return sortContests(unique);
             }
         }
     } catch (e) {
@@ -82,25 +88,30 @@ export async function fetchContests() {
         const response = await fetch('https://kontests.net/api/v1/all', { signal: controller.signal });
         clearTimeout(timeoutId);
 
-        if (response.ok) {
-            const data = await response.json();
-            const apiContests = data.map((c, index) => ({
-                id: index + 1000,
-                platform: c.site || 'Other',
-                name: c.name,
-                time: new Date(c.start_time),
-                duration: parseDuration(c.duration),
-                url: c.url
-            }));
-            return sortContests(apiContests);
-        }
+        const data = await response.json();
+        const apiContests = data.map((c, index) => ({
+            id: index + 1000,
+            platform: c.site || 'Other',
+            name: c.name,
+            time: new Date(c.start_time),
+            duration: parseDuration(c.duration),
+            url: c.url
+        }));
+
+        // Merge with fallbacks to ensure past contest history is available
+        const merged = [...apiContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
+
+        // Deduplicate by name and time
+        const unique = Array.from(new Map(merged.map(c => [c.name + c.time.getTime(), c])).values());
+
+        return sortContests(unique);
     } catch (error) {
         console.error("Emergency API fetch failed:", error);
     }
 
     // 3. Last Resort: Hardcoded Fallback
     console.log("Using hardcoded fallback data.");
-    return sortContests(fallbackContests);
+    return sortContests(fallbackContests.map(c => ({ ...c, time: new Date(c.time) })));
 }
 
 function sortContests(contests) {
