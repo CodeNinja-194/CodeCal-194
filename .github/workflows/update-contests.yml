@@ -2,8 +2,8 @@ name: Auto Update Contests
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
-  workflow_dispatch:       # manual run button
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
 
 jobs:
   update:
@@ -12,11 +12,18 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Fetch contests from API
         run: |
-          curl https://codecal-194.vercel.app/api/refresh \
-          > public/contests.json
+          curl -f https://codecal-194.vercel.app/api/refresh \
+            -o public/contests.json
+
+      - name: Show contests.json size
+        run: |
+          ls -lh public/contests.json
+          head -n 5 public/contests.json
 
       - name: Commit and push if changed
         run: |
