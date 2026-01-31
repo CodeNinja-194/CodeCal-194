@@ -20,7 +20,7 @@ export const fallbackContests = [
     { id: 14, platform: 'LeetCode', name: 'Weekly Contest 486', time: new Date("2026-01-25T08:00:00"), url: 'https://leetcode.com/contest/weekly-contest-486/' },
     { id: 15, platform: 'CodeForces', name: 'Div 2 Round 1075', time: new Date("2026-01-26T17:35:00"), url: 'https://codeforces.com/contests' },
     { id: 16, platform: 'CodeChef', name: 'Starters 223', time: new Date("2026-01-28T20:00:00"), url: 'https://www.codechef.com/contests' },
-    { id: 17, platform: 'LeetCode', name: 'Biweekly Contest 175', time: new Date("2026-01-31T07:30:00"), url: 'https://leetcode.com/contest/biweekly-contest-175/' },
+    { id: 17, platform: 'LeetCode', name: 'Biweekly Contest 175', time: new Date("2026-01-31T20:00:00"), url: 'https://leetcode.com/contest/biweekly-contest-175/' },
     { id: 18, platform: 'AtCoder', name: 'Beginner Contest 443', time: new Date("2026-01-31T21:00:00"), url: 'https://atcoder.jp/contests/abc443' },
     { id: 19, platform: 'CodeForces', name: 'Round 1077 (Div. 1)', time: new Date("2026-01-29T20:05:00"), url: 'https://codeforces.com/contests' },
     { id: 20, platform: 'CodeForces', name: 'Round 1077 (Div. 2)', time: new Date("2026-01-29T20:05:00"), url: 'https://codeforces.com/contests' },
