@@ -10,6 +10,7 @@ import PlatformIntensity from './components/PlatformIntensity';
 import PracticeZenith from './components/PracticeZenith';
 import PracticeSheet from './components/PracticeSheet';
 import Footer from './components/Footer';
+import SystemClock from './components/SystemClock';
 import { fetchContests, fallbackContests } from './lib/contests';
 
 function App() {
@@ -126,6 +127,8 @@ function App() {
 
                     <Footer />
                 </Show>
+
+                <SystemClock />
             </div>
         </>
     );

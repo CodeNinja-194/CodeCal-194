@@ -1,7 +1,14 @@
-import { For, Show, createMemo } from 'solid-js';
+import { For, Show, createMemo, createSignal, onMount, onCleanup } from 'solid-js';
 
 function ContestCard(props) {
     const contest = props.contest;
+    const [now, setNow] = createSignal(new Date());
+
+    onMount(() => {
+        const timer = setInterval(() => setNow(new Date()), 1000);
+        onCleanup(() => clearInterval(timer));
+    });
+
     const timeStr = contest.time.toLocaleString('en-IN', {
         weekday: 'short',
         month: 'short',
@@ -16,13 +23,13 @@ function ContestCard(props) {
     const endTimeStr = endTime.toLocaleString('en-IN', {
         hour: '2-digit',
         minute: '2-digit',
-        day: 'numeric' // Show day if it spans across days? Usually just time if same day.
+        day: 'numeric'
     });
 
     const getContestStatus = () => {
-        const now = new Date();
-        const diff = contest.time - now;
-        const timeSinceStart = now - contest.time;
+        const currentTime = now();
+        const diff = contest.time - currentTime;
+        const timeSinceStart = currentTime - contest.time;
 
         // Contest has ended
         if (timeSinceStart > duration) {
@@ -32,14 +39,25 @@ function ContestCard(props) {
         if (diff < 0 && timeSinceStart <= duration) {
             return { text: 'Live Now', class: 'status-live' };
         }
+
         // Contest is upcoming
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const totalSecs = Math.floor(diff / 1000);
+        if (totalSecs < 0) return { text: 'Starting...', class: 'status-soon' };
+
+        const days = Math.floor(totalSecs / (60 * 60 * 24));
+        const hours = Math.floor((totalSecs % (60 * 60 * 24)) / (60 * 60));
+        const mins = Math.floor((totalSecs % (60 * 60)) / 60);
+        const secs = totalSecs % 60;
 
         if (days > 0) return { text: `📅 ${days}d ${hours}h`, class: 'status-upcoming' };
         if (hours > 0) return { text: `⏳ ${hours}h ${mins}m`, class: 'status-upcoming' };
-        return { text: `⏭ ${mins}m`, class: 'status-soon' };
+
+        // Starting soon (last 10 mins)
+        if (mins < 10) {
+            return { text: `🔥 Starting soon: ${mins}m ${secs}s`, class: 'status-soon' };
+        }
+
+        return { text: `⏭ ${mins}m ${secs}s`, class: 'status-upcoming' };
     };
 
     const getDifficulty = () => {
@@ -51,12 +69,13 @@ function ContestCard(props) {
     };
 
     const dLevel = getDifficulty();
-    const status = getContestStatus();
+    const status = getContestStatus; // Use as getter in JSX or call it
 
     const displayStatusText = () => {
-        if (status.text === 'Live Now') return '🔴 LIVE NOW';
-        if (status.text === 'Ended') return '⌛ Ended';
-        return status.text;
+        const s = status();
+        if (s.text === 'Live Now') return 'LIVE NOW 🔥 ';
+        if (s.text === 'Ended') return 'Ended ⌛ ';
+        return s.text;
     };
 
     const handleClick = () => {
@@ -76,14 +95,13 @@ function ContestCard(props) {
                     </span>
                     <span class={`difficulty-tag ${dLevel.class}`}>{dLevel.text}</span>
                 </div>
-                <span class={`countdown ${status.class}`}>{displayStatusText()}</span>
+                <span class={`countdown ${status().class}`}>{displayStatusText()}</span>
             </div>
             <h3 class="contest-name">{contest.name}</h3>
             <div class="contest-time">
                 <ion-icon name="time-outline"></ion-icon>
                 <span>{timeStr}</span>
             </div>
-            {/* Show End Time, especially when filtered or generically useful */}
             <div class="end-time">
                 <ion-icon name="hourglass-outline"></ion-icon>
                 <span>Ends: {endTimeStr}</span>
@@ -92,7 +110,7 @@ function ContestCard(props) {
             <div class="join-btn-placeholder">
                 <button class="join-btn">
                     <ion-icon name="open-outline"></ion-icon>
-                    {status.class === 'status-ended' ? 'View Problems' : 'Join Challenge'}
+                    {status().class === 'status-ended' ? 'View Problems' : 'Join Challenge'}
                 </button>
             </div>
         </div>

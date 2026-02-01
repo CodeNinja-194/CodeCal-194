@@ -10,15 +10,15 @@ function PlatformIntensity(props) {
         const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
 
         platforms.forEach(p => counts[p] = 0);
-        
+
         // Filter contests for current month and next month only
         const filteredContests = props.contests.filter(c => {
             const contestDate = new Date(c.time);
             const contestMonth = contestDate.getMonth();
             const contestYear = contestDate.getFullYear();
-            
+
             return (contestMonth === currentMonth && contestYear === currentYear) ||
-                   (contestMonth === nextMonth && contestYear === nextYear);
+                (contestMonth === nextMonth && contestYear === nextYear);
         });
 
         filteredContests.forEach(c => {

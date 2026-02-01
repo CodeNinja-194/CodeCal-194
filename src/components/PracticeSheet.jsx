@@ -35,56 +35,130 @@ const practiceData = {
             ]
         }
     },
+    "BIT MANIPULATION": {
+        description: "Lightning-fast operations using bitwise logic - loved by competitive programmers",
+        subtopics: {
+            "Basic": [
+                { name: "Number of 1 bits", difficulty: "Easy", leetcode: "https://leetcode.com/problems/number-of-1-bits/", gfg: "" },
+                { name: "Power of two", difficulty: "Easy", leetcode: "https://leetcode.com/problems/power-of-two/", gfg: "" },
+                { name: "Count of bits", difficulty: "Easy", leetcode: "https://leetcode.com/problems/counting-bits/", gfg: "" },
+                { name: "Reverse bits", difficulty: "Easy", leetcode: "https://leetcode.com/problems/reverse-bits/", gfg: "" }
+            ],
+            "Single Number": [
+                { name: "Single number", difficulty: "Easy", leetcode: "https://leetcode.com/problems/single-number/", gfg: "" },
+                { name: "Missing number", difficulty: "Easy", leetcode: "https://leetcode.com/problems/missing-number/", gfg: "" },
+                { name: "Single number 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/single-number-ii/", gfg: "" }
+            ],
+            "XOR & Advanced": [
+                { name: "Sum of two integers", difficulty: "Medium", leetcode: "https://leetcode.com/problems/sum-of-two-integers/", gfg: "" },
+                { name: "Decode XORed permutation", difficulty: "Medium", leetcode: "https://leetcode.com/problems/decode-xored-permutation/", gfg: "" },
+                { name: "Bitwise and of numbers range", difficulty: "Medium", leetcode: "https://leetcode.com/problems/bitwise-and-of-numbers-range/", gfg: "" },
+                { name: "Maximum product of word lengths", difficulty: "Medium", leetcode: "https://leetcode.com/problems/maximum-product-of-word-lengths/", gfg: "" },
+                { name: "UTF-8 validation", difficulty: "Medium", leetcode: "https://leetcode.com/problems/utf-8-validation/", gfg: "" }
+            ]
+        }
+    },
     "ARRAYS": {
         description: "Master the foundation of all data structures - arrays are tested in 90% of interviews",
         subtopics: {
             "Basic Operations": [
                 { name: "Find the largest element in an array", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1" },
                 { name: "Find the second largest element", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/second-largest3735/1" },
-                { name: "Check if array is sorted", difficulty: "Easy", leetcode: "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/", gfg: "" },
-                { name: "Find missing number in array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/missing-number/", gfg: "" },
-                { name: "Remove duplicates from sorted array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/remove-duplicates-from-sorted-array/", gfg: "" },
-                { name: "Rotate array", difficulty: "Medium", leetcode: "https://leetcode.com/problems/rotate-array/", gfg: "" },
-                { name: "Best time to buy and sell stock", difficulty: "Easy", leetcode: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", gfg: "" }
+                { name: "Check if array is sorted", difficulty: "Easy", leetcode: "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/", gfg: "https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1" },
+                { name: "Find missing number in array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/missing-number/", gfg: "https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1" },
+                { name: "Concatenation of Array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/concatenation-of-array/description/?envType=problem-list-v2&envId=array", gfg: "" },
+                { name: "Shuffle the Array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/shuffle-the-array/description/?envType=problem-list-v2&envId=array", gfg: "" },
+                { name: "Best time to buy and sell stock", difficulty: "Easy", leetcode: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", gfg: "https://www.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1" },
+                { name: "Rotate array", difficulty: "Medium", leetcode: "https://leetcode.com/problems/rotate-array/", gfg: "https://www.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1" }
             ],
-            "Two Pointers": [
-                { name: "Reverse array", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/reverse-an-array/1" },
-                { name: "Move zeros to end", difficulty: "Easy", leetcode: "https://leetcode.com/problems/move-zeroes/", gfg: "" },
-                { name: "Two sum", difficulty: "Easy", leetcode: "https://leetcode.com/problems/two-sum/", gfg: "" },
-                { name: "Container with most water", difficulty: "Medium", leetcode: "https://leetcode.com/problems/container-with-most-water/", gfg: "" },
-                { name: "Three sum", difficulty: "Medium", leetcode: "https://leetcode.com/problems/3sum/", gfg: "" },
-                { name: "Trapping rain water", difficulty: "Hard", leetcode: "https://leetcode.com/problems/trapping-rain-water/", gfg: "" }
-            ],
+
             "Sorting": [
                 { name: "Merge sorted array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/merge-sorted-array/", gfg: "" },
+                { name: "Minimum Moves to sort students", difficulty: "Easy", leetcode: "https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/description/?envType=problem-list-v2&envId=sorting", gfg: "" },
+                { name: "Sort numbers by their bits", difficulty: "Easy", leetcode: "https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/description/?envType=problem-list-v2&envId=sorting", gfg: "" },
+                { name: "Squares of sorted array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/squares-of-a-sorted-array/?envType=problem-list-v2&envId=sorting", gfg: "" },
+                { name: "Sort 0's and 1's", difficulty: "Easy", gfg: "https://www.geeksforgeeks.org/problems/segregate-0s-and-1s5106/1" },
                 { name: "Sort colors", difficulty: "Medium", leetcode: "https://leetcode.com/problems/sort-colors/", gfg: "" }
             ],
-            "Binary Search on Arrays": [
-                { name: "Binary search", difficulty: "Easy", leetcode: "https://leetcode.com/problems/binary-search/", gfg: "" },
-                { name: "Find peak element", difficulty: "Medium", leetcode: "https://leetcode.com/problems/find-peak-element/", gfg: "" },
+
+            "Searching": [
+                { name: "Count pairs", difficulty: "Easy", leetcode: "https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/?envType=problem-list-v2&envId=binary-search", gfg: "" },
                 { name: "Search in rotated sorted array", difficulty: "Medium", leetcode: "https://leetcode.com/problems/search-in-rotated-sorted-array/", gfg: "" },
+                { name: "Search in rotated sorted array II", difficulty: "Medium", leetcode: "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/", gfg: "" },
+                { name: "Find peak element", difficulty: "Medium", leetcode: "https://leetcode.com/problems/find-peak-element/", gfg: "" },
+                { name: "Minimum in rotated sorted array", difficulty: "Medium", leetcode: "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/", gfg: "" },
                 { name: "Median of two sorted arrays", difficulty: "Hard", leetcode: "https://leetcode.com/problems/median-of-two-sorted-arrays/", gfg: "" }
             ],
+
             "Matrix": [
-                { name: "Spiral matrix", difficulty: "Medium", leetcode: "https://leetcode.com/problems/spiral-matrix/", gfg: "" },
+                { name: "Transpose matrix", difficulty: "Easy", leetcode: "https://leetcode.com/problems/transpose-matrix/description/", gfg: "" },
+                { name: "Lucky Number", difficulty: "Easy", leetcode: "https://leetcode.com/problems/lucky-numbers-in-a-matrix/description/?envType=problem-list-v2&envId=matrix" },
                 { name: "Rotate image", difficulty: "Medium", leetcode: "https://leetcode.com/problems/rotate-image/", gfg: "" },
-                { name: "Set matrix zeroes", difficulty: "Medium", leetcode: "https://leetcode.com/problems/set-matrix-zeroes/", gfg: "" }
+                { name: "Set matrix zeroes", difficulty: "Medium", leetcode: "https://leetcode.com/problems/set-matrix-zeroes/", gfg: "" },
+                { name: "Spiral matrix", difficulty: "Medium", leetcode: "https://leetcode.com/problems/spiral-matrix/", gfg: "" },
+                { name: "Minimum no of Flips ", difficulty: "Hard", leetcode: "https://leetcode.com/problems/minimum-number-of-flips-to-convert-binary-matrix-to-zero-matrix/description/?envType=problem-list-v2&envId=matrix" }
             ],
+
+            "Two Pointers": [
+                { name: "Reverse array", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/reverse-an-array/1" },
+                { name: "Move zeros to end", difficulty: "Easy", leetcode: "https://leetcode.com/problems/move-zeroes/", gfg: "https://www.geeksforgeeks.org/problems/move-all-zeroes-to-end-of-array0751/1" },
+                { name: "Remove duplicates from sorted array", difficulty: "Easy", leetcode: "https://leetcode.com/problems/remove-duplicates-from-sorted-array/", gfg: "https://www.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1" },
+                { name: "Two sum", difficulty: "Easy", leetcode: "https://leetcode.com/problems/two-sum/", gfg: "https://www.geeksforgeeks.org/problems/key-pair5616/1" },
+                { name: "Container with most water", difficulty: "Medium", leetcode: "https://leetcode.com/problems/container-with-most-water/", gfg: "https://www.geeksforgeeks.org/problems/container-with-most-water0535/1" },
+                { name: "Three sum", difficulty: "Medium", leetcode: "https://leetcode.com/problems/3sum/", gfg: "https://www.geeksforgeeks.org/problems/three-sum/1" },
+                { name: "Trapping rain water", difficulty: "Hard", leetcode: "https://leetcode.com/problems/trapping-rain-water/", gfg: "https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1" }
+            ],
+
+            "Sliding Window": [
+                { name: "Defuse Bomb", difficulty: "Easy", leetcode: "https://leetcode.com/problems/defuse-the-bomb/description/?envType=problem-list-v2&envId=sliding-window" },
+                { name: "Min diff. high and low of k scores", difficulty: "Easy", leetcode: "https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/description/?envType=problem-list-v2&envId=sliding-window" },
+                { name: "Max sum subarray size k", difficulty: "Easy", leetcode: "https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/", gfg: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1" },
+                { name: "Longest substring", difficulty: "Medium", leetcode: "https://leetcode.com/problems/longest-substring-without-repeating-characters/", gfg: "" },
+                { name: "Minimum Swaps", difficulty: "Medium", leetcode: "https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii/description/?envType=problem-list-v2&envId=sliding-window" },
+                { name: "Sliding window maximum", difficulty: "Hard", leetcode: "https://leetcode.com/problems/sliding-window-maximum/", gfg: "" }
+            ],
+
+            "Prefix Sum & Subarray": [
+                { name: "Topic Material", difficulty: "Easy-Medium", leetcode: "", gfg: "https://www.geeksforgeeks.org/dsa/top-problems-on-prefix-sum-technique-for-interviews/" },
+                { name: "Equilibrium Index", difficulty: "Easy", gfg: "https://www.geeksforgeeks.org/problems/equilibrium-point-1587115620/1" },
+                { name: "Product of array except self", difficulty: "Medium", leetcode: "https://leetcode.com/problems/product-of-array-except-self/", gfg: "" },
+                { name: "Maximum subarray", difficulty: "Medium", leetcode: "https://leetcode.com/problems/maximum-subarray/", gfg: "" },
+                { name: "Subarray sum equals k", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subarray-sum-equals-k/", gfg: "" },
+                { name: "New Topics", difficulty: "Easy-Medium", leetcode: "", gfg: "https://www.geeksforgeeks.org/dsa/array-subarray-subsequence-and-subset/" }
+            ],
+
             "Intervals": [
+                { name: "Topic Material", difficulty: "Easy-Medium", leetcode: "", gfg: "https://www.geeksforgeeks.org/dsa/coding-problems-on-interval-and-range-manipulation/" },
                 { name: "Merge intervals", difficulty: "Medium", leetcode: "https://leetcode.com/problems/merge-intervals/", gfg: "" },
                 { name: "Insert interval", difficulty: "Medium", leetcode: "https://leetcode.com/problems/insert-interval/", gfg: "" },
                 { name: "Meeting rooms 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/meeting-rooms-ii/", gfg: "" }
+            ]
+        }
+    },
+
+    "HASHING": {
+        description: "O(1) lookups transform many O(n²) problems into O(n) solutions",
+        subtopics: {
+            "Basic": [
+                { name: "Two Sum", difficulty: "Easy", leetcode: "https://leetcode.com/problems/two-sum/", gfg: "" },
+                { name: "Contains Duplicates", difficulty: "Easy", leetcode: "https://leetcode.com/problems/contains-duplicate/", gfg: "" },
+                { name: "Valid Anagram", difficulty: "Easy", leetcode: "https://leetcode.com/problems/valid-anagram/", gfg: "" },
+                { name: "Group anagrams", difficulty: "Medium", leetcode: "https://leetcode.com/problems/group-anagrams/", gfg: "" }
             ],
-            "Prefix Sum & Subarray": [
-                { name: "Product of array except self", difficulty: "Medium", leetcode: "https://leetcode.com/problems/product-of-array-except-self/", gfg: "" },
-                { name: "Maximum subarray", difficulty: "Medium", leetcode: "https://leetcode.com/problems/maximum-subarray/", gfg: "" },
-                { name: "Subarray sum equals k", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subarray-sum-equals-k/", gfg: "" }
+            "Subarray": [
+                { name: "Subarray sum equals k", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subarray-sum-equals-k/", gfg: "" },
+                { name: "Longest consecutive sequence", difficulty: "Medium", leetcode: "https://leetcode.com/problems/longest-consecutive-sequence/", gfg: "" },
+                { name: "Continuous subarray sum", difficulty: "Medium", leetcode: "https://leetcode.com/problems/continuous-subarray-sum/", gfg: "" }
             ],
-            "Sliding Window": [
-                { name: "Max sum subarray size k", difficulty: "Easy", leetcode: "https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/", gfg: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1" },
-                { name: "Longest substring", difficulty: "Medium", leetcode: "https://leetcode.com/problems/longest-substring-without-repeating-characters/", gfg: "" },
+            "Design": [
+                { name: "Design HashMap", difficulty: "Medium", leetcode: "https://leetcode.com/problems/design-hashmap/", gfg: "" },
+                { name: "LRU cache", difficulty: "Medium", leetcode: "https://leetcode.com/problems/lru-cache/", gfg: "" },
+                { name: "LFU cache", difficulty: "Hard", leetcode: "https://leetcode.com/problems/lfu-cache/", gfg: "" }
+            ],
+            "Advanced": [
+                { name: "4sum 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/4sum-ii/", gfg: "" },
                 { name: "Minimum window substring", difficulty: "Hard", leetcode: "https://leetcode.com/problems/minimum-window-substring/", gfg: "" },
-                { name: "Sliding window maximum", difficulty: "Hard", leetcode: "https://leetcode.com/problems/sliding-window-maximum/", gfg: "" }
+                { name: "Subarrays with k different integers", difficulty: "Hard", leetcode: "https://leetcode.com/problems/subarrays-with-k-different-integers/", gfg: "" }
             ]
         }
     },
@@ -98,8 +172,8 @@ const practiceData = {
                 { name: "Longest common prefix", difficulty: "Easy", leetcode: "https://leetcode.com/problems/longest-common-prefix/", gfg: "" }
             ],
             "Two Pointers": [
-                { name: "Reverse words in string", difficulty: "Medium", leetcode: "https://leetcode.com/problems/reverse-words-in-a-string/", gfg: "" },
                 { name: "Valid palindrome 2", difficulty: "Easy", leetcode: "https://leetcode.com/problems/valid-palindrome-ii/", gfg: "" },
+                { name: "Reverse words in string", difficulty: "Medium", leetcode: "https://leetcode.com/problems/reverse-words-in-a-string/", gfg: "" },
                 { name: "Longest palindromic substring", difficulty: "Medium", leetcode: "https://leetcode.com/problems/longest-palindromic-substring/", gfg: "" }
             ],
             "Sliding Window": [
@@ -157,34 +231,25 @@ const practiceData = {
             ]
         }
     },
-    "RECURSION & BACKTRACKING": {
-        description: "DFS masterclass - essential for trees and graphs",
+    "RECURSION": {
+        description: "Pure functional thinking - break problems into smaller self-similar copies",
         subtopics: {
-            "Basic Recursion": [
+            "Fundamentals": [
+                { name: "Print 1 to N / N to 1", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1" },
+                { name: "Sum of first N numbers", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/sum-of-first-n-terms5843/1" },
                 { name: "Factorial", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/factorial5439/1" },
-                { name: "Fibonacci", difficulty: "Easy", leetcode: "https://leetcode.com/problems/fibonacci-number/", gfg: "https://www.geeksforgeeks.org/problems/nth-fibonacci-number1335/1" },
-                { name: "Reverse string (recursion)", difficulty: "Easy", leetcode: "https://leetcode.com/problems/reverse-string/", gfg: "https://www.geeksforgeeks.org/problems/reverse-a-string-using-recursion/1" },
-                { name: "Power(x, n)", difficulty: "Medium", leetcode: "https://leetcode.com/problems/powx-n/", gfg: "https://www.geeksforgeeks.org/problems/implement-powxn/1" }
+                { name: "Fibonacci", difficulty: "Easy", leetcode: "https://leetcode.com/problems/fibonacci-number/", gfg: "https://www.geeksforgeeks.org/problems/nth-fibonacci-number1335/1" }
             ],
-            "Divide & Conquer": [
+            "Array & String": [
+                { name: "Check if array is sorted", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/check-if-array-is-sorted0604/1" },
+                { name: "Binary search (recursive)", difficulty: "Easy", leetcode: "https://leetcode.com/problems/binary-search/", gfg: "https://www.geeksforgeeks.org/problems/binary-search/1" },
+                { name: "String Palindrome check", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/problems/palindrome-string0817/1" },
+                { name: "Reverse string (recursion)", difficulty: "Easy", leetcode: "https://leetcode.com/problems/reverse-string/", gfg: "https://www.geeksforgeeks.org/problems/reverse-a-string-using-recursion/1" }
+            ],
+            "Intermediate": [
+                { name: "Power(x, n)", difficulty: "Medium", leetcode: "https://leetcode.com/problems/powx-n/", gfg: "https://www.geeksforgeeks.org/problems/implement-powxn/1" },
                 { name: "Merge sort", difficulty: "Medium", leetcode: "https://leetcode.com/problems/sort-an-array/", gfg: "https://www.geeksforgeeks.org/problems/merge-sort/1" },
                 { name: "Quick sort", difficulty: "Medium", leetcode: "https://leetcode.com/problems/sort-an-array/", gfg: "https://www.geeksforgeeks.org/problems/quick-sort/1" }
-            ],
-            "Subsets & Combinations": [
-                { name: "Subsets", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subsets/", gfg: "https://www.geeksforgeeks.org/problems/subsets-1613027340/1" },
-                { name: "Combination sum", difficulty: "Medium", leetcode: "https://leetcode.com/problems/combination-sum/", gfg: "https://www.geeksforgeeks.org/problems/combination-sum-1587115620/1" },
-                { name: "Subsets 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subsets-ii/", gfg: "https://www.geeksforgeeks.org/problems/subsets-ii/1" },
-                { name: "Combination sum 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/combination-sum-ii/", gfg: "https://www.geeksforgeeks.org/problems/combination-sum-ii-1664263532/1" }
-            ],
-            "Permutations": [
-                { name: "Permutations", difficulty: "Medium", leetcode: "https://leetcode.com/problems/permutations/", gfg: "https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1" },
-                { name: "Generate parentheses", difficulty: "Medium", leetcode: "https://leetcode.com/problems/generate-parentheses/", gfg: "https://www.geeksforgeeks.org/problems/generate-all-possible-parentheses/1" }
-            ],
-            "Backtracking": [
-                { name: "Palindrome partitioning", difficulty: "Medium", leetcode: "https://leetcode.com/problems/palindrome-partitioning/", gfg: "https://www.geeksforgeeks.org/problems/find-all-possible-palindrome-partitions-of-a-string/1" },
-                { name: "Word search", difficulty: "Medium", leetcode: "https://leetcode.com/problems/word-search/", gfg: "https://www.geeksforgeeks.org/problems/word-search/1" },
-                { name: "N queens", difficulty: "Hard", leetcode: "https://leetcode.com/problems/n-queens/", gfg: "https://www.geeksforgeeks.org/problems/n-queen-problem0315/1" },
-                { name: "Sudoku solver", difficulty: "Hard", leetcode: "https://leetcode.com/problems/sudoku-solver/", gfg: "https://www.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1" }
             ]
         }
     },
@@ -220,37 +285,49 @@ const practiceData = {
             ]
         }
     },
-    "STACKS & QUEUES": {
-        description: "LIFO/FIFO structures enable elegant solutions for nested and sequential problems",
+    "STACKS": {
+        description: "LIFO (Last-In-First-Out) - essential for expression parsing, redo/undo, and recursion simulation",
         subtopics: {
-            "Design": [
+            "Design & Basic": [
                 { name: "Implement stack using queues", difficulty: "Easy", leetcode: "https://leetcode.com/problems/implement-stack-using-queues/", gfg: "" },
-                { name: "Implement queue using stacks", difficulty: "Easy", leetcode: "https://leetcode.com/problems/implement-queue-using-stacks/", gfg: "" },
-                { name: "Min stack", difficulty: "Medium", leetcode: "https://leetcode.com/problems/min-stack/", gfg: "" }
-            ],
-            "Basic Operations": [
+                { name: "Min stack", difficulty: "Medium", leetcode: "https://leetcode.com/problems/min-stack/", gfg: "" },
                 { name: "Valid parentheses", difficulty: "Easy", leetcode: "https://leetcode.com/problems/valid-parentheses/", gfg: "" },
                 { name: "Backspace string compare", difficulty: "Easy", leetcode: "https://leetcode.com/problems/backspace-string-compare/", gfg: "" },
                 { name: "Remove outermost parentheses", difficulty: "Easy", leetcode: "https://leetcode.com/problems/remove-outermost-parentheses/", gfg: "" }
             ],
             "Monotonic Stack": [
                 { name: "Next greater element", difficulty: "Easy", leetcode: "https://leetcode.com/problems/next-greater-element-i/", gfg: "" },
+                { name: "Next greater element II", difficulty: "Medium", leetcode: "https://leetcode.com/problems/next-greater-element-ii/", gfg: "" },
                 { name: "Daily temperatures", difficulty: "Medium", leetcode: "https://leetcode.com/problems/daily-temperatures/", gfg: "" },
-                { name: "Next greater element 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/next-greater-element-ii/", gfg: "" },
                 { name: "Online stock span", difficulty: "Medium", leetcode: "https://leetcode.com/problems/online-stock-span/", gfg: "" },
                 { name: "Sum of subarray minimums", difficulty: "Medium", leetcode: "https://leetcode.com/problems/sum-of-subarray-minimums/", gfg: "" }
             ],
-            "Expression Evaluation": [
+            "Expression & Advanced": [
                 { name: "Evaluate reverse polish notation", difficulty: "Medium", leetcode: "https://leetcode.com/problems/evaluate-reverse-polish-notation/", gfg: "" },
-                { name: "Decode string", difficulty: "Medium", leetcode: "https://leetcode.com/problems/decode-string/", gfg: "" },
-                { name: "Basic calculator", difficulty: "Hard", leetcode: "https://leetcode.com/problems/basic-calculator/", gfg: "" }
-            ],
-            "Advanced": [
+                { name: "Basic calculator", difficulty: "Hard", leetcode: "https://leetcode.com/problems/basic-calculator/", gfg: "" },
                 { name: "Remove k digits", difficulty: "Medium", leetcode: "https://leetcode.com/problems/remove-k-digits/", gfg: "" },
                 { name: "Largest rectangle in histogram", difficulty: "Hard", leetcode: "https://leetcode.com/problems/largest-rectangle-in-histogram/", gfg: "" },
                 { name: "Trapping rain water", difficulty: "Hard", leetcode: "https://leetcode.com/problems/trapping-rain-water/", gfg: "" },
-                { name: "Maximal rectangle", difficulty: "Hard", leetcode: "https://leetcode.com/problems/maximal-rectangle/", gfg: "" },
-                { name: "Sliding window maximum", difficulty: "Hard", leetcode: "https://leetcode.com/problems/sliding-window-maximum/", gfg: "" }
+                { name: "Maximal rectangle", difficulty: "Hard", leetcode: "https://leetcode.com/problems/maximal-rectangle/", gfg: "" }
+            ]
+        }
+    },
+    "QUEUES": {
+        description: "FIFO (First-In-First-Out) - critical for BFS, scheduling, and stream processing",
+        subtopics: {
+            "Design & Basic": [
+                { name: "Implement queue using stacks", difficulty: "Easy", leetcode: "https://leetcode.com/problems/implement-queue-using-stacks/", gfg: "" },
+                { name: "Number of recent calls", difficulty: "Easy", leetcode: "https://leetcode.com/problems/number-of-recent-calls/", gfg: "" },
+                { name: "Design circular queue", difficulty: "Medium", leetcode: "https://leetcode.com/problems/design-circular-queue/", gfg: "" }
+            ],
+            "Deque (Double-Ended Queue)": [
+                { name: "Sliding window maximum", difficulty: "Hard", leetcode: "https://leetcode.com/problems/sliding-window-maximum/", gfg: "" },
+                { name: "Longest continuous subarray with absolute diff", difficulty: "Medium", leetcode: "https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/", gfg: "" }
+            ],
+            "Advanced": [
+                { name: "Decode string", difficulty: "Medium", leetcode: "https://leetcode.com/problems/decode-string/", gfg: "" },
+                { name: "DOTA2 Senate", difficulty: "Medium", leetcode: "https://leetcode.com/problems/predict-party-victory/", gfg: "" },
+                { name: "Simplify path", difficulty: "Medium", leetcode: "https://leetcode.com/problems/simplify-path/", gfg: "" }
             ]
         }
     },
@@ -339,6 +416,28 @@ const practiceData = {
             ]
         }
     },
+    "BACKTRACKING": {
+        description: "Brute force search technique for finding all solutions to a problem",
+        subtopics: {
+            "Subsets & Combinations": [
+                { name: "Subsets", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subsets/", gfg: "https://www.geeksforgeeks.org/problems/subsets-1613027340/1" },
+                { name: "Combination sum", difficulty: "Medium", leetcode: "https://leetcode.com/problems/combination-sum/", gfg: "https://www.geeksforgeeks.org/problems/combination-sum-1587115620/1" },
+                { name: "Subsets 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/subsets-ii/", gfg: "https://www.geeksforgeeks.org/problems/subsets-ii/1" },
+                { name: "Combination sum 2", difficulty: "Medium", leetcode: "https://leetcode.com/problems/combination-sum-ii/", gfg: "https://www.geeksforgeeks.org/problems/combination-sum-ii-1664263532/1" }
+            ],
+            "Permutations": [
+                { name: "Permutations", difficulty: "Medium", leetcode: "https://leetcode.com/problems/permutations/", gfg: "https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1" },
+                { name: "Generate parentheses", difficulty: "Medium", leetcode: "https://leetcode.com/problems/generate-parentheses/", gfg: "https://www.geeksforgeeks.org/problems/generate-all-possible-parentheses/1" }
+            ],
+            "Advanced Backtracking": [
+                { name: "Palindrome partitioning", difficulty: "Medium", leetcode: "https://leetcode.com/problems/palindrome-partitioning/", gfg: "https://www.geeksforgeeks.org/problems/find-all-possible-palindrome-partitions-of-a-string/1" },
+                { name: "Word search", difficulty: "Medium", leetcode: "https://leetcode.com/problems/word-search/", gfg: "https://www.geeksforgeeks.org/problems/word-search/1" },
+                { name: "N queens", difficulty: "Hard", leetcode: "https://leetcode.com/problems/n-queens/", gfg: "https://www.geeksforgeeks.org/problems/n-queen-problem0315/1" },
+                { name: "Sudoku solver", difficulty: "Hard", leetcode: "https://leetcode.com/problems/sudoku-solver/", gfg: "https://www.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1" }
+            ]
+        }
+    },
+
     "GRAPHS": {
         description: "Model real-world networks - social connections, maps, dependencies",
         subtopics: {

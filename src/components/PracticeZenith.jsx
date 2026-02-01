@@ -1,63 +1,60 @@
-import { createMemo } from 'solid-js';
-
-function PracticeZenith(props) {
-    const masterPlan = {
-        title: 'Top 300 Mastery Problems',
-        desc: 'A curated selection of the most impactful competitive programming problems across all platforms.',
-        motivation: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
-        target: '300 PROBLEMS'
+function PracticeZenith() {
+    const masteryPlan = {
+        title: "Ram's DSA Sheet",
+        description: 'Elite technical interview prep curated for global arena dominance.',
+        quote: 'Success is not final, failure is not fatal: it is the courage to continue.',
+        goal: '300 PROBLEMS'
     };
 
-    const navigateToPractice = () => {
+    const goToPractice = () => {
         window.history.pushState({}, '', '/practice');
         window.dispatchEvent(new Event('navigation'));
     };
 
     return (
-        <div class="zenith-nexus codeninja-section">
-            <div class="zenith-header">
-                <h6 class="section-title codeninja-title">CodeNinja-<span class="gradient-text">194</span></h6>
-                <p class="section-subtitle">Elite mastery track for global arena dominance</p>
-            </div>
-
+        <section class="zenith-nexus">
             <div class="zenith-mastery-hull">
-                <div class="mastery-prism">
-                    <div class="prism-base"></div>
-                    <div class="prism-glow"></div>
+                <div class="mastery-prism horizontal">
+                    <div class="prism-base" />
+                    <div class="prism-glow" />
 
-                    <div class="mastery-content-layer">
-                        <div class="elite-badge-glow">
-                            <span class="elite-text">ELITE TRACK</span>
+                    <div class="mastery-layout">
+                        {/* Info Section */}
+                        <div class="mastery-info">
+                            <div class="elite-badge-glow">
+                                <span class="elite-text">DSA TRACK</span>
+                            </div>
+                            <h3 class="mastery-headline">{masteryPlan.title}</h3>
+                            <p class="mastery-summary">{masteryPlan.description}</p>
                         </div>
 
-                        <h3 class="mastery-headline">{masterPlan.title}</h3>
-                        <p class="mastery-summary">{masterPlan.desc}</p>
+                        {/* Divider */}
+                        <div class="mastery-divider" />
 
-                        <div class="mastery-quote-box">
-                            <p>"{masterPlan.motivation}"</p>
+                        {/* Quote Section */}
+                        <div class="mastery-quote-mini">
+                            <p>“{masteryPlan.quote}”</p>
                         </div>
 
-                        <div class="mastery-metrics">
+                        {/* CTA Section */}
+                        <div class="mastery-cta">
                             <div class="metric-item">
-                                <span class="metric-val">{masterPlan.target}</span>
+                                <span class="metric-val">{masteryPlan.goal}</span>
                                 <span class="metric-key">CURATED FOR YOU</span>
                             </div>
+                            <button class="mastery-launch-btn compact" onClick={goToPractice}>
+                                <span>Begin Session</span>
+                                <ion-icon name="rocket-sharp"></ion-icon>
+                                <div class="btn-flare" />
+                            </button>
                         </div>
-
-                        <button class="mastery-launch-btn" onClick={navigateToPractice}>
-                            <span>Begin Practice Session</span>
-                            <div class="btn-flare"></div>
-                        </button>
                     </div>
 
-                    <div class="orbital-ring ring-1"></div>
-                    <div class="orbital-ring ring-2"></div>
-                    <div class="data-point p1"></div>
-                    <div class="data-point p2"></div>
-                    <div class="data-point p3"></div>
+                    {/* Subtle Decors */}
+                    <div class="orbital-ring ring-1" />
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
