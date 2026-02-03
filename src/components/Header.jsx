@@ -96,15 +96,15 @@ function Header(props) {
                     </a>
 
                     <div class="nav-actions">
-                        <a href="https://github.com/Codeninja-194" target="_blank" rel="noopener noreferrer" class="nav-item github-icon" title="GitHub">
+                        {/* <a href="https://github.com/Codeninja-194" target="_blank" rel="noopener noreferrer" class="nav-item github-icon" title="GitHub">
                             <ion-icon name="logo-github"></ion-icon>
                             <span class="mobile-only-text">GitHub</span>
-                        </a>
+                        </a> */}
 
-                        <a href="https://codeninja194.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-item portfolio-icon" title="Portfolio">
+                        {/* <a href="https://codeninja194.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-item portfolio-icon" title="Portfolio">
                             <img src="https://codeninja194.vercel.app/favicon.png" alt="Portfolio" class="portfolio-favicon" onError={(e) => { e.target.src = '/favicon.png'; }} />
                             <span class="mobile-only-text">Portfolio</span>
-                        </a>
+                        </a> */}
 
                         <button class="nav-item theme-btn icon-only" onClick={toggleTheme} title={theme() === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'} style="background: none; border: none; cursor: pointer;">
                             <ion-icon name={theme() === 'light' ? 'moon-outline' : 'sunny-outline'}></ion-icon>
