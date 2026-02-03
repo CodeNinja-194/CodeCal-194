@@ -5,7 +5,7 @@ const practiceData = {
     "LEARN THE BASICS": {
         description: "Language syntax, basic logic, and time complexity analysis.",
         problems: [
-            { name: "Master Sheet", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/gfg-academy/geeksforgeeks-master-sheet-list-of-all-cheat-sheets/" },
+            { name: "Codeforces ➱ Basic to Medium", difficulty: "Medium", leetcode: "", codeforces: "https://codeforces.com/group/MWSDmqGsZm/contests" },
             { name: "Data Types", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/c-data-types/" },
             { name: "User Input / Output", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/basic-input-and-output-in-c/" },
             { name: "Conditional Statements", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/c-c-if-else-statement-with-examples/" },
@@ -13,7 +13,8 @@ const practiceData = {
             { name: "Patterns", difficulty: "Easy", leetcode: "", gfg: "https://javaconceptoftheday.com/pattern-programs-in-java/" },
             { name: "Functions", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/dsa/functions-programming/" },
             { name: "Arrays, Strings Introduction", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/array-data-structure/" },
-            { name: "Time Complexity Analysis", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/dsa/understanding-time-complexity-simple-examples/" }
+            { name: "Time Complexity Analysis", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/dsa/understanding-time-complexity-simple-examples/" },
+            { name: "Master Sheet", difficulty: "Easy", leetcode: "", gfg: "https://www.geeksforgeeks.org/gfg-academy/geeksforgeeks-master-sheet-list-of-all-cheat-sheets/" }
         ]
     },
     "MATHEMATICS": {
@@ -752,6 +753,9 @@ function ProblemRow(props) {
                 </Show>
                 <Show when={props.p.leetcode}>
                     <a href={props.p.leetcode} target="_blank" class="v5-platform-link lc">LeetCode</a>
+                </Show>
+                <Show when={props.p.codeforces}>
+                    <a href={props.p.codeforces} target="_blank" class="v5-platform-link cf">CodeForces</a>
                 </Show>
             </div>
         </div>
