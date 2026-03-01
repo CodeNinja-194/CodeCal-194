@@ -179,6 +179,13 @@ export default async function handler(req, res) {
   const client = getSupabaseClient();
   const updateTimestamp = new Date().toISOString();
 
+  // Determine target month/year to fetch. Accepts query params ?year=YYYY&month=MM (1-12).
+  // Defaults to current month in UTC.
+  const url = new URL(req.url, 'http://localhost');
+  const q = url.searchParams;
+  const targetYear = q.has('year') ? Number(q.get('year')) : new Date().getUTCFullYear();
+  const targetMonth = q.has('month') ? Number(q.get('month')) - 1 : new Date().getUTCMonth();
+
   try {
     const results = await Promise.allSettled([
       fetchCodeforces(),
@@ -198,8 +205,15 @@ export default async function handler(req, res) {
 
     const unique = dedupe(allContests);
 
-    // Upsert to Supabase
-    const { data, error } = await client.from('contests').upsert(unique, {
+    // Filter contests to only include those in the target month/year
+    const filtered = unique.filter((c) => {
+      if (!c.startTime) return false;
+      const d = new Date(c.startTime);
+      return d.getUTCFullYear() === targetYear && d.getUTCMonth() === targetMonth;
+    });
+
+    // Upsert to Supabase (only month-specific contests)
+    const { data, error } = await client.from('contests').upsert(filtered, {
       onConflict: 'id'
     });
 
@@ -220,8 +234,11 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       updated_at: updateTimestamp,
+      requested_year: targetYear,
+      requested_month_index: targetMonth,
       total_fetched: allContests.length,
-      unique: unique.length
+      unique_total: unique.length,
+      upserted_for_month: filtered.length
     });
   } catch (err) {
     console.error('updateContests handler error', err);
