@@ -10,6 +10,7 @@ The API handlers have been converted from TypeScript to JavaScript for better Ve
 ## Legacy TypeScript Files (deprecated)
 
 The following TypeScript files are kept for reference but **not used in production**:
+
 - `api/contests.ts` (deprecated)
 - `api/cron/updateContests.ts` (deprecated)
 
