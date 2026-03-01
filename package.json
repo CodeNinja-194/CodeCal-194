@@ -5,15 +5,23 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "type-check": "tsc --noEmit",
+        "update:contests": "ts-node api/cron/updateContests.ts"
     },
     "dependencies": {
+        "@supabase/supabase-js": "^2.98.0",
+        "cheerio": "^1.2.0",
         "i": "^0.3.7",
         "install": "^0.13.0",
         "solid-js": "^1.8.11",
         "vercel": "^50.3.0"
     },
     "devDependencies": {
+        "@types/node": "^25.3.3",
+        "@types/node-fetch": "^2.6.13",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3",
         "vite": "^5.0.11",
         "vite-plugin-solid": "^2.8.2"
     }

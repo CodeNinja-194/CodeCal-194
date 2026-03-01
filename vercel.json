@@ -4,8 +4,8 @@
     "framework": "vite",
     "crons": [
         {
-            "path": "/api/refresh",
-            "schedule": "0 0 * * *"
+            "path": "/api/cron/updateContests",
+            "schedule": "0 6 * * *"
         }
     ]
 }

@@ -3,17 +3,20 @@
 ## ✅ Completed Changes
 
 ### 1. **Favicon Added** 🎨
+
 - Added your profile image as the website favicon
 - Located at `/public/favicon.png`
 - Visible in browser tab
 
 ### 2. **Light Mode Text Visibility Fixed** 💡
+
 - Updated CSS variables for better contrast in light mode
 - Fixed glass buttons to be visible in light mode
 - Contest cards now have proper background and borders in light theme
 - All text elements are now clearly readable
 
 ### 3. **Light & Dark Theme Toggle** 🌓
+
 - Added theme toggle button (sun/moon icon) in header
 - Default theme: Light mode
 - Theme preference saved to localStorage
@@ -21,17 +24,21 @@
 - All components adapt to selected theme
 
 ### 4. **Stats Cards Above Calendar** 📊
+
 Created 4 informative cards showing:
+
 - **🔴 LIVE NOW**: Shows count of currently running contests (with pulsing animation when live)
 - **⏭️ NEXT CONTEST**: Displays which platform & time until next contest starts
 - **📅 TODAY'S CONTESTS**: Count of all contests happening today
 - **🌍 TIMEZONE**: Dropdown to switch between IST (default), Local Time, and UTC
 
 ### 5. **Enhanced "Enable Alerts" Modal** 🔔
+
 Completely redesigned with:
+
 - **Auto reminder preferences** with checkboxes:
   - ✅ 24 hours before
-  - ✅ 1 hour before  
+  - ✅ 1 hour before
   - ✅ 10 minutes before
 - Preferences saved to localStorage
 - Browser-based (no login mandatory)
@@ -39,6 +46,7 @@ Completely redesigned with:
 - Works in both light and dark modes
 
 ### 6. **Timezone Support** 🌍
+
 - **Default: IST (India Standard Time)** - optimized for Indian users
 - Options to switch to:
   - Local Time (browser timezone)
@@ -48,6 +56,7 @@ Completely redesigned with:
 ## 📝 Technical Details
 
 ### Files Modified:
+
 1. `/index.html` - Added favicon link
 2. `/src/styles/index.css` - Theme variables, stat cards, reminder styles, light mode fixes
 3. `/src/components/Header.jsx` - Added theme toggle button
@@ -56,6 +65,7 @@ Completely redesigned with:
 6. `/src/App.jsx` - Added StatCards integration and timezone state
 
 ### Features Ready for Future Integration:
+
 - **OneSignal / Firebase Cloud Messaging**: The reminder preferences are already stored
 - **Per-contest alert toggle**: Architecture ready (can add bell icon to each contest card)
 - **API endpoint**: `/api/subscribe` already accepts reminder preferences
@@ -68,12 +78,38 @@ Completely redesigned with:
 4. **Visual Clarity**: Light mode is now fully usable with proper contrast
 5. **Localization**: Timezone support makes it usable globally while defaulting to IST
 
+---
+
+## 🛠️ Backend Refactor & Production Architecture
+
+To make CodeCal reliable in production the entire refresh mechanism was overhauled:
+
+- **Kontests API removed**; each platform now has its own fetcher module:
+  - `/lib/fetchers/codeforces.ts` (official API, `phase === "BEFORE"`)
+  - `/lib/fetchers/leetcode.ts` (generated weekly/biweekly contests)
+  - `/lib/fetchers/atcoder.ts` (HTML parser using Cheerio)
+  - `/lib/fetchers/codechef.ts` (weekly Starters generator)
+- Data normalized to a common schema with ISO timestamps and durations.
+- Deduplication on `platform+name+startTime` and sorted chronologically.
+- **Supabase integration** via `/lib/db.ts`; contests persist in `contests` table.
+- New API endpoints:
+  - `/api/cron/updateContests` – invoked by daily cron (0 6 \* \* \*)
+  - `/api/contests` – frontend now fetches from database only.
+- Old `/api/refresh` endpoint deprecated (returns 410).
+- Frontend `src/lib/contests.js` updated to call internal API instead of external services.
+- TypeScript added for backend code; build scripts and type‑check command included.
+
+This refactor ensures the site isn’t dependent on third‑party reliability and allows
+future features like per‑contest reminders and e‑mail alerts using stored preferences.
+
 ## 🚀 Next Steps (Optional Future Enhancements)
 
 1. **Integrate OneSignal**:
+
    ```bash
    npm install onesignal-web-sdk
    ```
+
    - Use stored reminder preferences to schedule notifications
    - Send browser push notifications at 24h, 1h, and 10min marks
 
@@ -86,7 +122,9 @@ Completely redesigned with:
    - Can schedule emails via cron jobs or services like SendGrid
 
 ## 📱 Mobile Responsiveness
+
 All new components are responsive:
+
 - Stat cards stack on mobile (grid auto-fit)
 - Theme toggle works on all screen sizes
 - Modal is touch-friendly

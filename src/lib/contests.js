@@ -57,59 +57,38 @@ export const fallbackContests = [
 ];
 
 export async function fetchContests() {
-    // 1. Try public/contests.json (Automation Source)
+    // Primary source: internal API backed by Supabase
     try {
-        const response = await fetch('/contests.json');
+        const response = await fetch('/api/contests');
         if (response.ok) {
             const data = await response.json();
             if (data && data.contests) {
-                console.log("Fetched contests from automation source.");
-                const fileContests = data.contests.map(c => ({
+                console.log("Fetched contests from internal API.");
+                const dbContests = data.contests.map(c => ({
                     ...c,
-                    time: new Date(c.time),
+                    time: new Date(c.startTime),
                     id: c.id || Math.random()
                 }));
 
-                // Merge with fallbacks to ensure history
-                const merged = [...fileContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
-                const unique = Array.from(new Map(merged.map(c => [c.name + (c.time instanceof Date ? c.time.getTime() : new Date(c.time).getTime()), c])).values());
+                // merge with fallback history to avoid gaps
+                const merged = [...dbContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
+                const unique = Array.from(
+                    new Map(
+                        merged.map(c => [
+                            c.name + (c.time instanceof Date ? c.time.getTime() : new Date(c.time).getTime()),
+                            c
+                        ])
+                    ).values()
+                );
 
                 return sortContests(unique);
             }
         }
     } catch (e) {
-        console.warn("Failed to fetch contests.json, trying live API...");
+        console.warn("Internal API fetch failed, falling back to local data.", e);
     }
 
-    // 2. Try Live API (Emergency Fallback)
-    try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 8000);
-        const response = await fetch('https://kontests.net/api/v1/all', { signal: controller.signal });
-        clearTimeout(timeoutId);
-
-        const data = await response.json();
-        const apiContests = data.map((c, index) => ({
-            id: index + 1000,
-            platform: c.site || 'Other',
-            name: c.name,
-            time: new Date(c.start_time),
-            duration: parseDuration(c.duration),
-            url: c.url
-        }));
-
-        // Merge with fallbacks to ensure past contest history is available
-        const merged = [...apiContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
-
-        // Deduplicate by name and time
-        const unique = Array.from(new Map(merged.map(c => [c.name + c.time.getTime(), c])).values());
-
-        return sortContests(unique);
-    } catch (error) {
-        console.error("Emergency API fetch failed:", error);
-    }
-
-    // 3. Last Resort: Hardcoded Fallback
+    // Fallback: use hardcoded list
     console.log("Using hardcoded fallback data.");
     return sortContests(fallbackContests.map(c => ({ ...c, time: new Date(c.time) })));
 }

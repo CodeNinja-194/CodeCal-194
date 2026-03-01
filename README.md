@@ -26,22 +26,45 @@ CodeCal is a premium coding contest tracker designed for competitive programmers
 
 - Node.js (Latest LTS recommended)
 - npm or yarn
+- A [Supabase](https://supabase.io/) project with a `contests` table matching the schema:
+  ```sql
+  create table contests (
+    id text primary key,
+    platform text not null,
+    name text not null,
+    "startTime" timestamptz not null,
+    "endTime" timestamptz not null,
+    "durationSeconds" integer not null,
+    url text not null
+  );
+  ```
+- Environment variables configured in Vercel or locally:
+  - `SUPABASE_URL` (your project URL)
+  - `SUPABASE_ANON_KEY` or `SUPABASE_SERVICE_ROLE_KEY`
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/Codeninja-194/CodeCal.git
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
+   ```
+
+4. (Optional) run TypeScript type checks:
+   ```bash
+   npx tsc --noEmit
    ```
 
 ## 📦 Deployment
@@ -51,16 +74,19 @@ CodeCal is a premium coding contest tracker designed for competitive programmers
 To deploy your project to Vercel using the CLI, follow these steps:
 
 1. **Install Vercel CLI** (if not already installed):
+
    ```bash
    npm i -g vercel
    ```
 
 2. **Login to Vercel**:
+
    ```bash
    vercel login
    ```
 
 3. **Deploy Preview**:
+
    ```bash
    vercel
    ```
@@ -73,6 +99,7 @@ To deploy your project to Vercel using the CLI, follow these steps:
 ## 👤 Author
 
 **Codeninja-194**
+
 - GitHub: [@Codeninja-194](https://github.com/Codeninja-194)
 - Roadmap: [DSA Roadmap](https://whimsical.com/dsa-roadmap-JegsSL6nFr1b3V25bRzpYA)
 
