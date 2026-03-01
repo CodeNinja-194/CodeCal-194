@@ -90,9 +90,18 @@ async function fetchLeetCode() {
       biweekly.setUTCDate(biweekly.getUTCDate() + 14);
     }
 
-    for (let i = 0; i < 10; i++) {
-      events.push({ date: new Date(biweekly), type: 'biweekly' });
-      biweekly.setUTCDate(biweekly.getUTCDate() + 14);
+    // Generate weekly and biweekly events for the next ~90 days to ensure month coverage
+    const horizon = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
+    let w = new Date(weekly);
+    while (w <= horizon) {
+      events.push({ date: new Date(w), type: 'weekly' });
+      w.setUTCDate(w.getUTCDate() + 7);
+    }
+
+    let b = new Date(biweekly);
+    while (b <= horizon) {
+      events.push({ date: new Date(b), type: 'biweekly' });
+      b.setUTCDate(b.getUTCDate() + 14);
     }
 
     events.sort((a, b) => a.date.getTime() - b.date.getTime());
