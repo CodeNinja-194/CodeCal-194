@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
+import cheerio from 'cheerio';
 
 let supabase = null;
 
@@ -122,13 +123,52 @@ async function fetchAtCoder() {
   try {
     const res = await fetch('https://atcoder.jp/contests/');
     const html = await res.text();
-    
-    // Basic check - if page loads, return empty (requires Cheerio for full parsing)
-    if (html.includes('atcoder')) {
-      console.log('AtCoder page fetched but requires Cheerio for parsing');
-      return [];
-    }
-    return [];
+    const $ = cheerio.load(html);
+    const contests = [];
+
+    // Parse upcoming table (#contest-table-upcoming)
+    $('#contest-table-upcoming tbody tr').each((i, row) => {
+      const cols = $(row).find('td');
+      if (cols.length < 3) return;
+
+      const timeText = $(cols[0]).text().trim(); // e.g. "2026-03-01 21:00"
+      const nameEl = $(cols[1]).find('a');
+      const name = nameEl.text().trim();
+      const href = nameEl.attr('href');
+      const url = href ? 'https://atcoder.jp' + href : null;
+      const durText = $(cols[2]).text().trim();
+
+      const timeMatch = /^(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})/.exec(timeText);
+      if (!timeMatch) return;
+      const [_, datePart, timePart] = timeMatch;
+      const [year, month, day] = datePart.split('-').map(Number);
+      const [hour, minute] = timePart.split(':').map(Number);
+
+      // AtCoder shows times in JST (UTC+9)
+      const startUTC = Date.UTC(year, month - 1, day, hour - 9, minute);
+      // parse duration like '2:00' or '5:00:00'
+      const parseDuration = (str) => {
+        const parts = str.split(':').map(Number);
+        if (parts.length === 2) return (parts[0] * 3600 + parts[1] * 60);
+        if (parts.length === 3) return (parts[0] * 3600 + parts[1] * 60 + parts[2]);
+        return 0;
+      };
+
+      const durationSeconds = parseDuration(durText) || 0;
+      const endUTC = startUTC + durationSeconds * 1000;
+
+      contests.push({
+        id: url || `${name}-${datePart}-${timePart}`,
+        platform: 'AtCoder',
+        name,
+        startTime: new Date(startUTC).toISOString(),
+        endTime: new Date(endUTC).toISOString(),
+        durationSeconds,
+        url: url || 'https://atcoder.jp/contests/'
+      });
+    });
+
+    return contests;
   } catch (err) {
     console.error('fetchAtCoder error:', err);
     return [];
@@ -137,34 +177,68 @@ async function fetchAtCoder() {
 
 async function fetchCodeChef() {
   try {
-    const now = new Date();
-    const events = [];
-    let next = new Date(Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      14,
-      30,
-      0
-    ));
-    const dayDiff = (3 - next.getUTCDay() + 7) % 7 || 7;
-    next.setUTCDate(next.getUTCDate() + dayDiff);
-    const durationSeconds = 2 * 60 * 60;
+    const res = await fetch('https://www.codechef.com/contests');
+    const html = await res.text();
+    const $ = cheerio.load(html);
+    const contests = [];
 
-    for (let i = 0; i < 4; i++) {
-      const startTime = next.toISOString();
-      events.push({
-        id: `starters-${startTime}`,
-        platform: 'CodeChef',
-        name: `CodeChef Starters`,
-        startTime,
-        endTime: new Date(next.getTime() + durationSeconds * 1000).toISOString(),
-        durationSeconds,
-        url: 'https://www.codechef.com/contests'
-      });
-      next = new Date(next.getTime() + 7 * 24 * 60 * 60 * 1000);
+    // Heuristic: find tables or sections containing 'Upcoming' or 'Future' contests
+    $('table').each((i, table) => {
+      const heading = $(table).prev('h3, h2').text().toLowerCase();
+      if (!heading.includes('future') && !heading.includes('upcoming') && !heading.includes('present')) return;
+
+      $(table)
+        .find('tbody tr')
+        .each((j, row) => {
+          const cols = $(row).find('td');
+          if (cols.length < 2) return;
+          const nameEl = $(cols[0]).find('a');
+          const name = nameEl.text().trim() || $(cols[0]).text().trim();
+          const href = nameEl.attr('href');
+          const url = href && href.startsWith('http') ? href : href ? `https://www.codechef.com${href}` : 'https://www.codechef.com/contests';
+          const timeText = $(cols[1]).text().trim();
+
+          // Try to parse a date from timeText
+          const parsed = Date.parse(timeText);
+          if (!isNaN(parsed)) {
+            const startTime = new Date(parsed).toISOString();
+            const durationSeconds = 2 * 60 * 60; // default
+            contests.push({
+              id: url || `${name}-${startTime}`,
+              platform: 'CodeChef',
+              name,
+              startTime,
+              endTime: new Date(parsed + durationSeconds * 1000).toISOString(),
+              durationSeconds,
+              url
+            });
+          }
+        });
+    });
+
+    // If no contests found via scraping, fallback to weekly Starters generation
+    if (contests.length === 0) {
+      const now = new Date();
+      let next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 14, 30, 0));
+      const dayDiff = (3 - next.getUTCDay() + 7) % 7 || 7;
+      next.setUTCDate(next.getUTCDate() + dayDiff);
+      const durationSeconds = 2 * 60 * 60;
+      for (let i = 0; i < 8; i++) {
+        const startTime = next.toISOString();
+        contests.push({
+          id: `starters-${startTime}`,
+          platform: 'CodeChef',
+          name: `CodeChef Starters (${startTime.slice(0,10)})`,
+          startTime,
+          endTime: new Date(next.getTime() + durationSeconds * 1000).toISOString(),
+          durationSeconds,
+          url: 'https://www.codechef.com/contests'
+        });
+        next = new Date(next.getTime() + 7 * 24 * 60 * 60 * 1000);
+      }
     }
-    return events;
+
+    return contests;
   } catch (err) {
     console.error('fetchCodeChef error:', err);
     return [];
