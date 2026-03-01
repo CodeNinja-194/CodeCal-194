@@ -7,7 +7,9 @@
         "build": "vite build",
         "preview": "vite preview",
         "type-check": "tsc --noEmit",
-        "update:contests": "ts-node api/cron/updateContests.ts"
+        "test:fetchers": "node test-fetchers.js",
+        "import:contests": "node import-contests.js",
+        "update:contests": "echo 'Run on Vercel via cron. For testing, use: npm run test:fetchers'"
     },
     "dependencies": {
         "@supabase/supabase-js": "^2.98.0",
