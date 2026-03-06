@@ -91,7 +91,7 @@ async function importContests() {
     console.log(`   • LeetCode: ${sampleContests[1].name}`);
     console.log(`   • AtCoder: ${sampleContests[2].name}`);
     console.log(`   • CodeChef: ${sampleContests[3].name}`);
-    
+
     // Verify the insert
     const { data: verify, error: verifyError } = await supabase
       .from('contests')

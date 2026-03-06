@@ -9,7 +9,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Needed to push changes
+      contents: write
 
     steps:
       - name: Checkout repo
@@ -17,23 +17,17 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Trigger Database Sync
-        run: |
-          echo "Triggering Vercel scraping engine..."
-          # Call the update endpoint to fetch latest from websites and update Supabase
-          curl -f -X GET "https://codecal-194.vercel.app/api/cron/updateContests" \
-               -H "Accept: application/json"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
 
-      - name: Wait for Sync
-        run: sleep 5 # Give the DB a moment to settle
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Update contests.json for Repo
-        run: |
-          echo "Fetching updated contest list for public/contests.json..."
-          # Fetch the latest contests and save to the public directory
-          curl -f -X GET "https://codecal-194.vercel.app/api/contests" \
-               -H "Accept: application/json" \
-               -o public/contests.json
+      - name: Run Fetcher Script
+        run: npm run update:contests
 
       - name: Commit and push if changed
         run: |
@@ -41,7 +35,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/contests.json
           
-          # Only commit if there are changes
           if git diff --staged --quiet; then
             echo "No changes in contest data."
           else

@@ -57,7 +57,37 @@ export const fallbackContests = [
 ];
 
 export async function fetchContests() {
-    // Primary source: internal API backed by Supabase
+    // Primary source: Static JSON updated by GitHub Cron
+    try {
+        const response = await fetch('/contests.json');
+        if (response.ok) {
+            const data = await response.json();
+            if (data && data.contests) {
+                console.log("Fetched contests from static file.");
+                const staticContests = data.contests.map(c => ({
+                    ...c,
+                    time: new Date(c.time || c.startTime),
+                    id: c.id || Math.random()
+                }));
+
+                const merged = [...staticContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
+                const unique = Array.from(
+                    new Map(
+                        merged.map(c => [
+                            c.name + (c.time instanceof Date ? c.time.getTime() : new Date(c.time).getTime()),
+                            c
+                        ])
+                    ).values()
+                );
+
+                return sortContests(unique);
+            }
+        }
+    } catch (e) {
+        console.warn("Static JSON fetch failed, trying API fallback.", e);
+    }
+
+    // Secondary source: internal API (legacy/Supabase)
     try {
         const response = await fetch('/api/contests');
         if (response.ok) {
@@ -70,7 +100,6 @@ export async function fetchContests() {
                     id: c.id || Math.random()
                 }));
 
-                // merge with fallback history to avoid gaps
                 const merged = [...dbContests, ...fallbackContests.map(c => ({ ...c, time: new Date(c.time) }))];
                 const unique = Array.from(
                     new Map(

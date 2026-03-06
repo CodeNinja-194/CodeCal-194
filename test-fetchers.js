@@ -30,12 +30,12 @@ async function testCodeforces() {
     console.log('\n🟦 Testing Codeforces...');
     const res = await fetch('https://codeforces.com/api/contest.list?gym=false');
     const data = await res.json();
-    
+
     if (data.status !== 'OK') {
       console.error('❌ Codeforces API error:', data.status);
       return [];
     }
-    
+
     const before = data.result.filter(c => c.phase === 'BEFORE');
     console.log(`✅ Codeforces: Found ${before.length} upcoming contests`);
     return before.slice(0, 2); // show first 2
@@ -52,7 +52,7 @@ async function testLeetCode() {
     const next = new Date(now);
     next.setUTCDate(next.getUTCDate() + ((0 - next.getUTCDay() + 7) % 7 || 7));
     next.setUTCHours(8, 0, 0, 0);
-    
+
     console.log(`✅ LeetCode: Generated Weekly Contest for ${next.toISOString()}`);
     return [{ name: 'Weekly Contest', startTime: next.toISOString() }];
   } catch (err) {
@@ -66,7 +66,7 @@ async function testAtCoder() {
     console.log('\n🟥 Testing AtCoder...');
     const res = await fetch('https://atcoder.jp/contests/');
     const html = await res.text();
-    
+
     // Simple check if we got HTML
     if (html.includes('atcoder')) {
       console.log(`✅ AtCoder: Fetched page (${html.length} bytes)`);
@@ -90,7 +90,7 @@ async function testCodeChef() {
     const dayDiff = (3 - next.getUTCDay() + 7) % 7 || 7;
     next.setUTCDate(next.getUTCDate() + dayDiff);
     next.setUTCHours(14, 30, 0, 0);
-    
+
     console.log(`✅ CodeChef: Generated Starters for ${next.toISOString()}`);
     return [{ name: 'Starters Contest', startTime: next.toISOString() }];
   } catch (err) {
@@ -102,29 +102,29 @@ async function testCodeChef() {
 async function testSupabase() {
   try {
     console.log('\n\n📦 Testing Supabase Connection...');
-    
+
     const url = process.env.SUPABASE_URL || 'NOT_SET';
     const key = process.env.SUPABASE_ANON_KEY || 'NOT_SET';
-    
+
     if (url === 'NOT_SET' || key === 'NOT_SET') {
       console.error('❌ Environment variables not set!');
       console.log('   Set SUPABASE_URL and SUPABASE_ANON_KEY');
       return false;
     }
-    
+
     console.log(`✅ SUPABASE_URL: ${url.slice(0, 30)}...`);
     console.log(`✅ SUPABASE_ANON_KEY: ${key.slice(0, 20)}...`);
-    
+
     // Create Supabase client
     const supabase = createClient(url, key);
-    
+
     // Try to fetch from contests table
     try {
       const { data, error } = await supabase
         .from('contests')
         .select('*')
         .limit(1);
-      
+
       if (error) {
         console.error(`❌ Supabase query error: ${error.message}`);
         console.error(`   Code: ${error.code}`);
@@ -135,7 +135,7 @@ async function testSupabase() {
         }
         return false;
       }
-      
+
       console.log(`✅ Supabase connected! Table has ${data?.length || 0} rows`);
       return true;
     } catch (err) {
