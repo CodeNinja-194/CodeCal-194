@@ -2,12 +2,14 @@ name: Auto Update Contests
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
-  workflow_dispatch:
+    - cron: "0 0,12 * * *" # Runs at 00:00 and 12:00 UTC (Twice a day)
+  workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to push changes
 
     steps:
       - name: Checkout repo
@@ -15,20 +17,34 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Fetch contests from API
+      - name: Trigger Database Sync
         run: |
-          curl -f https://codecal-194.vercel.app/api/refresh \
-            -o public/contests.json
+          echo "Triggering Vercel scraping engine..."
+          # Call the update endpoint to fetch latest from websites and update Supabase
+          curl -f -X GET "https://codecal-194.vercel.app/api/cron/updateContests" \
+               -H "Accept: application/json"
 
-      - name: Show contests.json size
+      - name: Wait for Sync
+        run: sleep 5 # Give the DB a moment to settle
+
+      - name: Update contests.json for Repo
         run: |
-          ls -lh public/contests.json
-          head -n 5 public/contests.json
+          echo "Fetching updated contest list for public/contests.json..."
+          # Fetch the latest contests and save to the public directory
+          curl -f -X GET "https://codecal-194.vercel.app/api/contests" \
+               -H "Accept: application/json" \
+               -o public/contests.json
 
       - name: Commit and push if changed
         run: |
-          git config user.name "codecal-bot"
-          git config user.email "bot@codecal.dev"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/contests.json
-          git commit -m "auto: update contests" || echo "No changes"
-          git push
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes in contest data."
+          else
+            git commit -m "auto: update contest data [skip ci]"
+            git push
+          fi
