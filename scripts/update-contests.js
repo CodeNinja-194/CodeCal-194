@@ -16,6 +16,37 @@ if (!fs.existsSync(PUBLIC_DIR)) {
     fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 }
 
+// Helper: Shorten Name & Remove Dates
+function shortenName(name) {
+    if (!name) return '';
+
+    // Remove (YYYY-MM-DD) or (YYYY-MM-DD HH:mm) patterns
+    let clean = name.replace(/\(\d{4}-\d{2}-\d{2}.*?\)/gi, '').trim();
+
+    // Remove common annoying prefixes/suffixes
+    let short = clean
+        .replace(/202[4-6]\s+/gi, '') // Remove year
+        .replace(/Asia Pacific Championship - Online Mirror\s*/gi, 'ICPC Asia Pacific')
+        .replace(/\(Unrated, Online Mirror, ICPC Rules, Teams Preferred\)/gi, '')
+        .replace(/\(Rated for Div. \d\)/gi, '')
+        .replace(/\(Div. (\d) \+ Div. (\d)\)/gi, 'Div $1+$2')
+        .replace(/\(Div. (\d)\)/gi, 'Div $1')
+        .replace(/AtCoder Beginner Contest\s*/gi, 'ABC ')
+        .replace(/AtCoder Regular Contest\s*/gi, 'ARC ')
+        .replace(/AtCoder Grand Contest\s*/gi, 'AGC ')
+        .replace(/AtCoder Heuristic Contest\s*/gi, 'AHC ')
+        .replace(/Starters Contest/gi, 'Starters')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    // If still too long, cap it
+    if (short.length > 50) {
+        short = short.substring(0, 47) + '...';
+    }
+
+    return short;
+}
+
 // 1. Codeforces Fetcher
 async function fetchCodeforces() {
     try {
@@ -27,10 +58,10 @@ async function fetchCodeforces() {
             .filter(c => c.phase === 'BEFORE')
             .map(c => ({
                 platform: 'CodeForces',
-                name: c.name,
+                name: shortenName(c.name),
                 time: new Date(c.startTimeSeconds * 1000).toISOString(),
                 url: `https://codeforces.com/contest/${c.id}`,
-                duration: c.durationSeconds
+                duration: (c.durationSeconds || 7200) * 1000
             }));
     } catch (err) {
         console.error('❌ Codeforces error:', err.message);
@@ -66,13 +97,14 @@ async function fetchAtCoder() {
             // JST to UTC conversion (UTC+9)
             const startUTC = new Date(Date.UTC(year, month - 1, day, hour - 9, minute));
 
-            // Basic duration parsing "02:00" -> 7200
             const parts = durText.split(':').map(Number);
-            const duration = parts.length === 2 ? parts[0] * 3600 + parts[1] * 60 : parts[0] * 3600 + parts[1] * 60 + parts[2];
+            let duration = 0;
+            if (parts.length === 2) duration = (parts[0] * 3600 + parts[1] * 60) * 1000;
+            else if (parts.length === 3) duration = (parts[0] * 3600 + parts[1] * 60 + parts[2]) * 1000;
 
             contests.push({
                 platform: 'AtCoder',
-                name,
+                name: shortenName(name),
                 time: startUTC.toISOString(),
                 url,
                 duration
@@ -85,67 +117,91 @@ async function fetchAtCoder() {
     }
 }
 
-// 3. LeetCode Generator (Predictive)
+// 3. LeetCode Generator (Predictive with Numbering)
 function generateLeetCode() {
-    console.log('🟩 Generating LeetCode schedule...');
+    console.log('🟩 Generating LeetCode schedule with numbering...');
     const now = new Date();
     const contests = [];
 
+    // Reference: Weekly 490 was 2026-02-22
+    const weeklyBaselineDate = new Date(Date.UTC(2026, 1, 22, 8, 0, 0));
+    const weeklyBaselineNum = 490;
+
     // Weekly: Sunday 8:00 UTC
-    let weekly = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 8, 0, 0));
-    weekly.setUTCDate(weekly.getUTCDate() + (7 - weekly.getUTCDay()) % 7);
-    if (weekly < now) weekly.setUTCDate(weekly.getUTCDate() + 7);
+    let weekly = new Date(weeklyBaselineDate);
+    let weeklyNum = weeklyBaselineNum;
+
+    while (weekly < now) {
+        weekly.setUTCDate(weekly.getUTCDate() + 7);
+        weeklyNum++;
+    }
 
     for (let i = 0; i < 4; i++) {
         contests.push({
             platform: 'LeetCode',
-            name: `Weekly Contest (${weekly.toISOString().split('T')[0]})`,
+            name: `Weekly Contest ${weeklyNum}`,
             time: weekly.toISOString(),
             url: 'https://leetcode.com/contest/',
-            duration: 5400 // 90 min
+            duration: 90 * 60 * 1000
         });
         weekly.setUTCDate(weekly.getUTCDate() + 7);
+        weeklyNum++;
     }
 
-    // Biweekly: Sat 8:00 UTC (Anchor: Jan 3 2026)
-    const anchor = new Date(Date.UTC(2026, 0, 3, 8, 0, 0));
-    let biweekly = new Date(anchor);
+    // Reference: Biweekly 177 was 2026-02-28
+    const biweeklyBaselineDate = new Date(Date.UTC(2026, 1, 28, 8, 0, 0));
+    const biweeklyBaselineNum = 177;
+
+    let biweekly = new Date(biweeklyBaselineDate);
+    let biweeklyNum = biweeklyBaselineNum;
+
     while (biweekly < now) {
         biweekly.setUTCDate(biweekly.getUTCDate() + 14);
+        biweeklyNum++;
     }
+
     for (let i = 0; i < 2; i++) {
         contests.push({
             platform: 'LeetCode',
-            name: `Biweekly Contest (${biweekly.toISOString().split('T')[0]})`,
+            name: `Biweekly Contest ${biweeklyNum}`,
             time: biweekly.toISOString(),
             url: 'https://leetcode.com/contest/',
-            duration: 5400
+            duration: 90 * 60 * 1000
         });
         biweekly.setUTCDate(biweekly.getUTCDate() + 14);
+        biweeklyNum++;
     }
     return contests;
 }
 
-// 4. CodeChef Generator (Predictive)
+// 4. CodeChef Generator (Predictive with Numbering)
 function generateCodeChef() {
-    console.log('🟨 Generating CodeChef schedule...');
+    console.log('🟨 Generating CodeChef schedule with numbering...');
     const now = new Date();
     const contests = [];
 
-    // Starters: Wednesday 14:30 UTC
-    let next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 14, 30, 0));
-    next.setUTCDate(next.getUTCDate() + (3 - next.getUTCDay() + 7) % 7);
-    if (next < now) next.setUTCDate(next.getUTCDate() + 7);
+    // Reference: Starters 227 was 2026-02-25
+    const baselineDate = new Date(Date.UTC(2026, 1, 25, 14, 30, 0));
+    const baselineNum = 227;
+
+    let next = new Date(baselineDate);
+    let nextNum = baselineNum;
+
+    while (next < now) {
+        next.setUTCDate(next.getUTCDate() + 7);
+        nextNum++;
+    }
 
     for (let i = 0; i < 4; i++) {
         contests.push({
             platform: 'CodeChef',
-            name: `Starters Contest (${next.toISOString().split('T')[0]})`,
+            name: `Starters ${nextNum}`,
             time: next.toISOString(),
             url: 'https://www.codechef.com/contests',
-            duration: 7200 // 2 hours
+            duration: 2 * 60 * 60 * 1000
         });
         next.setUTCDate(next.getUTCDate() + 7);
+        nextNum++;
     }
     return contests;
 }
@@ -162,8 +218,8 @@ async function run() {
     // Sort by time
     all.sort((a, b) => new Date(a.time) - new Date(b.time));
 
-    // Deduplicate by Name + Time
-    const unique = Array.from(new Map(all.map(c => [c.name + c.time, c])).values());
+    // Deduplicate by Platform + Time
+    const unique = Array.from(new Map(all.map(c => [c.platform + c.time, c])).values());
 
     const result = {
         updated_at: new Date().toISOString(),
