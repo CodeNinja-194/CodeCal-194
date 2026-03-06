@@ -23,30 +23,39 @@ function shortenName(name) {
     // Remove (YYYY-MM-DD) or (YYYY-MM-DD HH:mm) patterns
     let clean = name.replace(/\(\d{4}-\d{2}-\d{2}.*?\)/gi, '').trim();
 
-    // Remove common annoying prefixes/suffixes
+    // Aggressively shorten names for calendar view
     let short = clean
         .replace(/202[4-6]\s+/gi, '') // Remove year
-        // Specific ICPC cleanup
-        .replace(/ICPC/g, 'ICPC') // Normalize case
-        .replace(/ICPC\s+ICPC/g, 'ICPC') // De-duplicate
-        .replace(/Asia Pacific Championship - Online Mirror/gi, 'Asia Pacific (Mirror)')
-        .replace(/\(Unrated, Online Mirror, ICPC Rules, Teams Preferred\)/gi, '')
-        .replace(/\(Rated for Div. \d\)/gi, '')
-        .replace(/\(Div. (\d) \+ Div. (\d)\)/gi, 'Div $1+$2')
-        .replace(/\(Div. (\d)\)/gi, 'Div $1')
+        // Platform specific aggressive shortening
         .replace(/AtCoder Beginner Contest\s*/gi, 'ABC ')
         .replace(/AtCoder Regular Contest\s*/gi, 'ARC ')
         .replace(/AtCoder Grand Contest\s*/gi, 'AGC ')
         .replace(/AtCoder Heuristic Contest\s*/gi, 'AHC ')
-        .replace(/Weekly Contest \(\d{4}-\d{2}-\d{2}\)/gi, 'Weekly Contest') // Extra fallback
-        .replace(/Biweekly Contest \(\d{4}-\d{2}-\d{2}\)/gi, 'Biweekly Contest')
-        .replace(/Starters Contest/gi, 'Starters')
+        .replace(/UNIQUE VISION Programming Contest.*?\((AHC\s*\d+)\)/gi, '$1') // Extract AHC ID
+        .replace(/Codeforces Round\s*/gi, 'CF ')
+        .replace(/Educational Codeforces Round\s*/gi, 'Edu CF ')
+        .replace(/Kotlin Heroes:\s*/gi, 'Kotlin ')
+        .replace(/LeetCode Weekly Contest\s*/gi, 'LC Weekly ')
+        .replace(/LeetCode Biweekly Contest\s*/gi, 'LC Biweekly ')
+        .replace(/Weekly Contest\s*/gi, 'LC Weekly ')
+        .replace(/Biweekly Contest\s*/gi, 'LC Biweekly ')
+        .replace(/CodeChef Starters Contest\s*/gi, 'CC Starters ')
+        .replace(/Starters Contest\s*/gi, 'CC Starters ')
+        .replace(/Starters\s*/gi, 'CC Starters ')
+        // General cleanup
+        .replace(/Asia Pacific Championship - Online Mirror/gi, 'ICPC Asia Pac')
+        .replace(/\(Unrated, Online Mirror, ICPC Rules, Teams Preferred\)/gi, '')
+        .replace(/\(Rated for Div. \d\)/gi, '')
+        .replace(/\(Div. (\d) \+ Div. (\d)\)/gi, 'Div $1+$2')
+        .replace(/\(Div. (\d)\)/gi, 'Div $1')
+        .replace(/ICPC/g, 'ICPC')
+        .replace(/ICPC\s+ICPC/g, 'ICPC')
         .replace(/\s+/g, ' ')
         .trim();
 
-    // If still too long, cap it
-    if (short.length > 50) {
-        short = short.substring(0, 47) + '...';
+    // If still too long, cap it even shorter
+    if (short.length > 40) {
+        short = short.substring(0, 37) + '...';
     }
 
     return short;
@@ -144,7 +153,7 @@ function generateLeetCode() {
     for (let i = 0; i < 4; i++) {
         contests.push({
             platform: 'LeetCode',
-            name: `Weekly Contest ${weeklyNum}`,
+            name: `LC Weekly ${weeklyNum}`,
             time: weekly.toISOString(),
             url: 'https://leetcode.com/contest/',
             duration: 90 * 60 * 1000
@@ -168,7 +177,7 @@ function generateLeetCode() {
     for (let i = 0; i < 2; i++) {
         contests.push({
             platform: 'LeetCode',
-            name: `Biweekly Contest ${biweeklyNum}`,
+            name: `LC Biweekly ${biweeklyNum}`,
             time: biweekly.toISOString(),
             url: 'https://leetcode.com/contest/',
             duration: 90 * 60 * 1000
@@ -200,7 +209,7 @@ function generateCodeChef() {
     for (let i = 0; i < 4; i++) {
         contests.push({
             platform: 'CodeChef',
-            name: `Starters ${nextNum}`,
+            name: `CC Starters ${nextNum}`,
             time: next.toISOString(),
             url: 'https://www.codechef.com/contests',
             duration: 2 * 60 * 60 * 1000

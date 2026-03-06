@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-06T03:22:14.254Z",
+  "updated_at": "2026-03-06T03:22:52.721Z",
   "count": 23,
   "contests": [
     {
@@ -11,42 +11,42 @@
     },
     {
       "platform": "CodeForces",
-      "name": "ICPC Asia Pacific (Mirror)",
+      "name": "ICPC Asia Pac",
       "time": "2026-03-08T01:45:00.000Z",
       "url": "https://codeforces.com/contest/2206",
       "duration": 18000000
     },
     {
       "platform": "LeetCode",
-      "name": "Weekly Contest 492",
+      "name": "LC Weekly 492",
       "time": "2026-03-08T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
     },
     {
       "platform": "CodeForces",
-      "name": "Codeforces Round 1085 Div 1+2",
+      "name": "CF 1085 Div 1+2",
       "time": "2026-03-08T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2207",
       "duration": 10800000
     },
     {
       "platform": "CodeChef",
-      "name": "Starters 229",
+      "name": "CC Starters 229",
       "time": "2026-03-11T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
     },
     {
       "platform": "AtCoder",
-      "name": "UNIQUE VISION Programming Contest Spring (AHC 062)",
+      "name": "AHC 062",
       "time": "2026-03-14T06:00:00.000Z",
       "url": "https://atcoder.jp/contests/ahc062",
       "duration": 14400000
     },
     {
       "platform": "LeetCode",
-      "name": "Biweekly Contest 178",
+      "name": "LC Biweekly 178",
       "time": "2026-03-14T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
@@ -60,28 +60,28 @@
     },
     {
       "platform": "CodeForces",
-      "name": "Codeforces Round Div 2",
+      "name": "CF Div 2",
       "time": "2026-03-14T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2208",
       "duration": 7200000
     },
     {
       "platform": "LeetCode",
-      "name": "Weekly Contest 493",
+      "name": "LC Weekly 493",
       "time": "2026-03-15T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
     },
     {
       "platform": "CodeForces",
-      "name": "Educational Codeforces Round 188",
+      "name": "Educational CF 188",
       "time": "2026-03-16T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2204",
       "duration": 7200000
     },
     {
       "platform": "CodeChef",
-      "name": "Starters 230",
+      "name": "CC Starters 230",
       "time": "2026-03-18T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
@@ -95,7 +95,7 @@
     },
     {
       "platform": "LeetCode",
-      "name": "Weekly Contest 494",
+      "name": "LC Weekly 494",
       "time": "2026-03-22T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
@@ -109,14 +109,14 @@
     },
     {
       "platform": "CodeChef",
-      "name": "Starters 231",
+      "name": "CC Starters 231",
       "time": "2026-03-25T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
     },
     {
       "platform": "LeetCode",
-      "name": "Biweekly Contest 179",
+      "name": "LC Biweekly 179",
       "time": "2026-03-28T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
@@ -130,7 +130,7 @@
     },
     {
       "platform": "LeetCode",
-      "name": "Weekly Contest 495",
+      "name": "LC Weekly 495",
       "time": "2026-03-29T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
@@ -144,7 +144,7 @@
     },
     {
       "platform": "CodeChef",
-      "name": "Starters 232",
+      "name": "CC Starters 232",
       "time": "2026-04-01T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
