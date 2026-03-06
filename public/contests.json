@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-06T03:14:48.337Z",
+  "updated_at": "2026-03-06T03:15:24.037Z",
   "count": 23,
   "contests": [
     {
@@ -11,7 +11,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "ICPC ICPC Asia Pacific",
+      "name": "ICPC Asia Pacific (Mirror)",
       "time": "2026-03-08T01:45:00.000Z",
       "url": "https://codeforces.com/contest/2206",
       "duration": 18000000

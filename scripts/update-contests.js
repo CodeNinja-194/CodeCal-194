@@ -26,7 +26,10 @@ function shortenName(name) {
     // Remove common annoying prefixes/suffixes
     let short = clean
         .replace(/202[4-6]\s+/gi, '') // Remove year
-        .replace(/Asia Pacific Championship - Online Mirror\s*/gi, 'ICPC Asia Pacific')
+        // Specific ICPC cleanup
+        .replace(/ICPC/g, 'ICPC') // Normalize case
+        .replace(/ICPC\s+ICPC/g, 'ICPC') // De-duplicate
+        .replace(/Asia Pacific Championship - Online Mirror/gi, 'Asia Pacific (Mirror)')
         .replace(/\(Unrated, Online Mirror, ICPC Rules, Teams Preferred\)/gi, '')
         .replace(/\(Rated for Div. \d\)/gi, '')
         .replace(/\(Div. (\d) \+ Div. (\d)\)/gi, 'Div $1+$2')
@@ -35,6 +38,8 @@ function shortenName(name) {
         .replace(/AtCoder Regular Contest\s*/gi, 'ARC ')
         .replace(/AtCoder Grand Contest\s*/gi, 'AGC ')
         .replace(/AtCoder Heuristic Contest\s*/gi, 'AHC ')
+        .replace(/Weekly Contest \(\d{4}-\d{2}-\d{2}\)/gi, 'Weekly Contest') // Extra fallback
+        .replace(/Biweekly Contest \(\d{4}-\d{2}-\d{2}\)/gi, 'Biweekly Contest')
         .replace(/Starters Contest/gi, 'Starters')
         .replace(/\s+/g, ' ')
         .trim();
