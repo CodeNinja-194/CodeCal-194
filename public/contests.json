@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-07T01:58:31.452Z",
-  "count": 23,
+  "updated_at": "2026-03-07T12:48:27.028Z",
+  "count": 22,
   "contests": [
-    {
-      "platform": "AtCoder",
-      "name": "ABC 448",
-      "time": "2026-03-07T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc448",
-      "duration": 6000000
-    },
     {
       "platform": "CodeForces",
       "name": "ICPC Asia Pac",
