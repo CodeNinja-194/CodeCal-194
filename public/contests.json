@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-08T02:08:01.008Z",
+  "updated_at": "2026-03-08T12:50:14.403Z",
   "count": 21,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 492",
-      "time": "2026-03-08T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
     {
       "platform": "CodeForces",
       "name": "CF 1085 Div 1+2",
@@ -148,6 +141,13 @@
       "time": "2026-04-04T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc452",
       "duration": 6000000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 496",
+      "time": "2026-04-05T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     }
   ]
 }
