@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-11T13:01:08.142Z",
+  "updated_at": "2026-03-12T02:07:34.912Z",
   "count": 21,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 229",
-      "time": "2026-03-11T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "AtCoder",
       "name": "AHC 062",
@@ -141,6 +134,13 @@
       "time": "2026-04-05T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 233",
+      "time": "2026-04-08T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     },
     {
       "platform": "AtCoder",
