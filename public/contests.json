@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-14T12:52:54.386Z",
-  "count": 21,
+  "updated_at": "2026-03-15T02:27:37.631Z",
+  "count": 20,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1086 Div 2",
-      "time": "2026-03-14T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2208",
-      "duration": 7200000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Weekly 493",
