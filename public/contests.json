@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-16T13:13:31.586Z",
-  "count": 21,
+  "updated_at": "2026-03-17T02:07:56.292Z",
+  "count": 20,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "Educational CF 188",
-      "time": "2026-03-16T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2204",
-      "duration": 7200000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 230",
