@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-03-17T13:13:11.960Z",
-  "count": 20,
+  "updated_at": "2026-03-18T02:12:06.000Z",
+  "count": 21,
   "contests": [
     {
       "platform": "CodeChef",
@@ -18,7 +18,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 2",
+      "name": "CF 1087 Div 2",
       "time": "2026-03-21T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2209",
       "duration": 7200000
@@ -60,10 +60,10 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 2",
+      "name": "CF Div 1+2",
       "time": "2026-03-28T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2210",
-      "duration": 7200000
+      "url": "https://codeforces.com/contest/2211",
+      "duration": 9000000
     },
     {
       "platform": "LeetCode",
@@ -78,6 +78,13 @@
       "time": "2026-03-29T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/agc077",
       "duration": 10800000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "CF Div 2",
+      "time": "2026-03-29T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2210",
+      "duration": 8100000
     },
     {
       "platform": "CodeChef",
