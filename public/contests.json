@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-18T13:13:34.937Z",
+  "updated_at": "2026-03-19T02:12:49.713Z",
   "count": 21,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 230",
-      "time": "2026-03-18T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "AtCoder",
       "name": "ABC 450",
@@ -141,6 +134,13 @@
       "time": "2026-04-12T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 234",
+      "time": "2026-04-15T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     },
     {
       "platform": "AtCoder",
