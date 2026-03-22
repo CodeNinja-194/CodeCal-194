@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-21T12:50:31.086Z",
-  "count": 20,
+  "updated_at": "2026-03-22T02:13:37.990Z",
+  "count": 19,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1087 Div 2",
-      "time": "2026-03-21T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2209",
-      "duration": 7200000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Weekly 494",
