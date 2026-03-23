@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-22T12:52:40.215Z",
+  "updated_at": "2026-03-23T02:21:37.074Z",
   "count": 18,
   "contests": [
     {
@@ -25,7 +25,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 1+2",
+      "name": "CF 1088 Div 1+2",
       "time": "2026-03-28T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2211",
       "duration": 9000000
