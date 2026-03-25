@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-03-25T02:11:44.203Z",
-  "count": 20,
+  "updated_at": "2026-03-25T13:11:32.034Z",
+  "count": 21,
   "contests": [
     {
       "platform": "CodeChef",
@@ -141,6 +141,13 @@
       "time": "2026-04-25T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc455",
       "duration": 6000000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "JR WEST and ALGO ARTIS Programming Co...",
+      "time": "2026-04-26T06:00:00.000Z",
+      "url": "https://atcoder.jp/contests/ahc064",
+      "duration": 14400000
     }
   ]
 }
