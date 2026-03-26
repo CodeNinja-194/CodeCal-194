@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-03-25T13:11:32.034Z",
-  "count": 21,
+  "updated_at": "2026-03-26T02:25:28.523Z",
+  "count": 22,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 231",
-      "time": "2026-03-25T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Biweekly 179",
@@ -56,6 +49,13 @@
       "name": "CC Starters 232",
       "time": "2026-04-01T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
+      "duration": 7200000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "April Fools Day Contest 2026",
+      "time": "2026-04-01T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2214",
       "duration": 7200000
     },
     {
@@ -134,6 +134,13 @@
       "time": "2026-04-19T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 235",
+      "time": "2026-04-22T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     },
     {
       "platform": "AtCoder",
