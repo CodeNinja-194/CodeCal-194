@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-03-28T02:09:37.974Z",
-  "count": 22,
+  "updated_at": "2026-03-28T12:56:17.044Z",
+  "count": 21,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Biweekly 179",
-      "time": "2026-03-28T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ABC 451",
-      "time": "2026-03-28T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc451",
-      "duration": 6000000
-    },
     {
       "platform": "CodeForces",
       "name": "Nebius Round 2 (CF 1088, Div. 1 + Div...",
@@ -141,6 +127,13 @@
       "time": "2026-04-22T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Biweekly 181",
+      "time": "2026-04-25T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
