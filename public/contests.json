@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-04-01T13:23:13.076Z",
-  "count": 19,
+  "updated_at": "2026-04-02T02:24:02.277Z",
+  "count": 18,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 232",
-      "time": "2026-04-01T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
-    {
-      "platform": "CodeForces",
-      "name": "April Fools Day Contest 2026",
-      "time": "2026-04-01T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2214",
-      "duration": 7200000
-    },
     {
       "platform": "AtCoder",
       "name": "AHC 063",
@@ -134,6 +120,13 @@
       "time": "2026-04-26T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 236",
+      "time": "2026-04-29T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     }
   ]
 }
