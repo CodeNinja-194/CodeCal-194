@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-02T13:14:49.005Z",
+  "updated_at": "2026-04-03T02:24:48.220Z",
   "count": 19,
   "contests": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 4",
+      "name": "CF 1090 Div 4",
       "time": "2026-04-04T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2218",
       "duration": 8100000
