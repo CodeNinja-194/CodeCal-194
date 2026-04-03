@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-03T02:24:48.220Z",
-  "count": 19,
+  "updated_at": "2026-04-03T13:04:34.071Z",
+  "count": 18,
   "contests": [
-    {
-      "platform": "AtCoder",
-      "name": "AHC 063",
-      "time": "2026-04-03T10:00:00.000Z",
-      "url": "https://atcoder.jp/contests/ahc063",
-      "duration": 864000000
-    },
     {
       "platform": "AtCoder",
       "name": "ABC 452",
