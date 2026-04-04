@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-04T02:09:57.742Z",
-  "count": 18,
+  "updated_at": "2026-04-04T12:56:21.417Z",
+  "count": 17,
   "contests": [
-    {
-      "platform": "AtCoder",
-      "name": "ABC 452",
-      "time": "2026-04-04T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc452",
-      "duration": 6000000
-    },
     {
       "platform": "CodeForces",
       "name": "CF 1090 Div 4",
