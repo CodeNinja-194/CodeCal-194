@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-07T02:28:07.151Z",
-  "count": 17,
+  "updated_at": "2026-04-07T13:20:04.049Z",
+  "count": 18,
   "contests": [
     {
       "platform": "CodeForces",
@@ -22,6 +22,13 @@
       "time": "2026-04-11T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "Midnight Code Cup Qualification Round",
+      "time": "2026-04-11T12:00:00.000Z",
+      "url": "https://codeforces.com/contest/2186",
+      "duration": 10800000
     },
     {
       "platform": "AtCoder",
