@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-08T13:21:14.860Z",
+  "updated_at": "2026-04-09T02:24:01.475Z",
   "count": 16,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 233",
-      "time": "2026-04-08T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Biweekly 180",
@@ -25,7 +18,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 2",
+      "name": "CF 1092 Div 2",
       "time": "2026-04-12T05:35:00.000Z",
       "url": "https://codeforces.com/contest/2216",
       "duration": 10800000
@@ -39,7 +32,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 2",
+      "name": "CF 1093 Div 2",
       "time": "2026-04-13T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2220",
       "duration": 7200000
@@ -113,6 +106,13 @@
       "time": "2026-05-03T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 237",
+      "time": "2026-05-06T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     }
   ]
 }
