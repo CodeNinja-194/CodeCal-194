@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-10T02:34:48.383Z",
-  "count": 17,
+  "updated_at": "2026-04-10T13:11:36.766Z",
+  "count": 18,
   "contests": [
     {
       "platform": "LeetCode",
@@ -120,6 +120,13 @@
       "time": "2026-05-06T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "Polaris.AI Programming Contest 2026（A...",
+      "time": "2026-05-09T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/abc457",
+      "duration": 6000000
     }
   ]
 }
