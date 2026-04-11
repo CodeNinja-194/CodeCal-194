@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-04-11T02:13:33.531Z",
-  "count": 18,
+  "updated_at": "2026-04-11T12:58:51.287Z",
+  "count": 17,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Biweekly 180",
-      "time": "2026-04-11T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ABC 453",
-      "time": "2026-04-11T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc453",
-      "duration": 6000000
-    },
     {
       "platform": "CodeForces",
       "name": "CF 1092 (Div. 2, Based on THUPC — Fin...",
@@ -120,6 +106,13 @@
       "time": "2026-05-06T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Biweekly 182",
+      "time": "2026-05-09T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
