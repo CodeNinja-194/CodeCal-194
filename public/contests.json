@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-11T12:58:51.287Z",
-  "count": 17,
+  "updated_at": "2026-04-12T02:36:32.611Z",
+  "count": 18,
   "contests": [
     {
       "platform": "CodeForces",
@@ -99,6 +99,13 @@
       "time": "2026-05-03T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "ARC 218",
+      "time": "2026-05-03T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/arc218",
+      "duration": 7200000
     },
     {
       "platform": "CodeChef",
