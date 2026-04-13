@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-12T13:02:07.762Z",
-  "count": 17,
+  "updated_at": "2026-04-13T02:41:40.131Z",
+  "count": 19,
   "contests": [
     {
       "platform": "CodeForces",
@@ -80,6 +80,13 @@
       "duration": 7200000
     },
     {
+      "platform": "AtCoder",
+      "name": "ABC 456",
+      "time": "2026-05-02T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/abc456",
+      "duration": 6000000
+    },
+    {
       "platform": "LeetCode",
       "name": "LC Weekly 500",
       "time": "2026-05-03T08:00:00.000Z",
@@ -120,6 +127,13 @@
       "time": "2026-05-10T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "CodeQUEEN -qual- (ABC 462)",
+      "time": "2026-06-13T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/abc462",
+      "duration": 6000000
     }
   ]
 }
