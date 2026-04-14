@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-13T13:26:35.926Z",
+  "updated_at": "2026-04-14T02:35:24.137Z",
   "count": 19,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1093 Div 2",
-      "time": "2026-04-13T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2220",
-      "duration": 7200000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 234",
@@ -99,6 +92,13 @@
       "time": "2026-05-03T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/arc218",
       "duration": 7200000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "Next DP Contest",
+      "time": "2026-05-05T04:00:00.000Z",
+      "url": "https://atcoder.jp/contests/ndpc2026",
+      "duration": 18000000
     },
     {
       "platform": "CodeChef",
