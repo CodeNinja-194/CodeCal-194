@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-15T13:25:12.627Z",
-  "count": 19,
+  "updated_at": "2026-04-16T02:40:19.830Z",
+  "count": 21,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 234",
-      "time": "2026-04-15T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "AtCoder",
       "name": "Keysight Technologies Programming Con...",
@@ -22,6 +15,13 @@
       "time": "2026-04-19T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "Educational CF 189",
+      "time": "2026-04-21T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2225",
+      "duration": 7200000
     },
     {
       "platform": "CodeChef",
@@ -101,6 +101,13 @@
       "duration": 18000000
     },
     {
+      "platform": "CodeForces",
+      "name": "CF Div 2",
+      "time": "2026-05-06T06:05:00.000Z",
+      "url": "https://codeforces.com/contest/2224",
+      "duration": 9000000
+    },
+    {
       "platform": "CodeChef",
       "name": "CC Starters 237",
       "time": "2026-05-06T14:30:00.000Z",
@@ -127,6 +134,13 @@
       "time": "2026-05-10T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 238",
+      "time": "2026-05-13T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     },
     {
       "platform": "AtCoder",
