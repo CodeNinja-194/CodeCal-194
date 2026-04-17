@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-16T13:45:16.747Z",
-  "count": 21,
+  "updated_at": "2026-04-17T02:36:07.189Z",
+  "count": 23,
   "contests": [
     {
       "platform": "AtCoder",
@@ -52,6 +52,13 @@
       "duration": 6000000
     },
     {
+      "platform": "CodeForces",
+      "name": "CF Div 1+2",
+      "time": "2026-04-25T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2222",
+      "duration": 9000000
+    },
+    {
       "platform": "AtCoder",
       "name": "JR WEST and ALGO ARTIS Programming Co...",
       "time": "2026-04-26T06:00:00.000Z",
@@ -64,6 +71,13 @@
       "time": "2026-04-26T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "CF Div 2",
+      "time": "2026-04-28T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2226",
+      "duration": 8100000
     },
     {
       "platform": "CodeChef",
