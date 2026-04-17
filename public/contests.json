@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-17T02:36:07.189Z",
-  "count": 23,
+  "updated_at": "2026-04-17T13:20:39.483Z",
+  "count": 25,
   "contests": [
     {
       "platform": "AtCoder",
@@ -161,6 +161,20 @@
       "name": "CodeQUEEN -qual- (ABC 462)",
       "time": "2026-06-13T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc462",
+      "duration": 6000000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "ARC 222",
+      "time": "2026-06-14T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/arc222",
+      "duration": 7200000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "第七回日本最強プログラマー学生選手権～Advance～ -予選- （ABC...",
+      "time": "2026-06-27T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/abc464",
       "duration": 6000000
     }
   ]
