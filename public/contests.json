@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-18T02:27:15.282Z",
-  "count": 25,
+  "updated_at": "2026-04-18T13:03:23.011Z",
+  "count": 24,
   "contests": [
-    {
-      "platform": "AtCoder",
-      "name": "Keysight Technologies Programming Con...",
-      "time": "2026-04-18T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc454",
-      "duration": 6000000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Weekly 498",
