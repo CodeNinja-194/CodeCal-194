@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-19T02:42:06.207Z",
+  "updated_at": "2026-04-19T13:02:28.628Z",
   "count": 24,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 498",
-      "time": "2026-04-19T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
     {
       "platform": "CodeForces",
       "name": "Educational CF 189",
@@ -148,6 +141,13 @@
       "time": "2026-05-13T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 502",
+      "time": "2026-05-17T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
