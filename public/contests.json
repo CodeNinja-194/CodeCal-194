@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-20T02:42:47.083Z",
-  "count": 24,
+  "updated_at": "2026-04-20T13:43:24.111Z",
+  "count": 23,
   "contests": [
     {
       "platform": "CodeForces",
@@ -14,13 +14,6 @@
       "name": "CC Starters 235",
       "time": "2026-04-22T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
-    {
-      "platform": "CodeForces",
-      "name": "CF Div 2",
-      "time": "2026-04-23T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2213",
       "duration": 7200000
     },
     {
@@ -39,7 +32,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 1+2",
+      "name": "Spectral::Cup Round 1 (CF 1094, Div. ...",
       "time": "2026-04-25T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2222",
       "duration": 9000000
