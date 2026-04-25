@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-04-25T02:29:03.105Z",
-  "count": 24,
+  "updated_at": "2026-04-25T13:04:52.574Z",
+  "count": 23,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Biweekly 181",
-      "time": "2026-04-25T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "Ｓｋｙ Inc, Programming Contest (ABC 455)",
-      "time": "2026-04-25T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc455",
-      "duration": 6000000
-    },
     {
       "platform": "CodeForces",
       "name": "Spectral::Cup Round 1 (CF 1094, Div. ...",
@@ -148,6 +134,13 @@
       "time": "2026-05-20T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Biweekly 183",
+      "time": "2026-05-23T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
