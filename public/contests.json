@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-25T13:04:52.574Z",
-  "count": 23,
+  "updated_at": "2026-04-26T02:44:59.574Z",
+  "count": 22,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "Spectral::Cup Round 1 (CF 1094, Div. ...",
-      "time": "2026-04-25T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2222",
-      "duration": 9000000
-    },
     {
       "platform": "AtCoder",
       "name": "JR WEST and ALGO ARTIS Programming Co...",
