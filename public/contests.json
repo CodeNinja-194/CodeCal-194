@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-28T02:54:50.629Z",
+  "updated_at": "2026-04-29T02:53:21.350Z",
   "count": 25,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1095 Div 2",
-      "time": "2026-04-28T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2226",
-      "duration": 8100000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 236",
@@ -18,7 +11,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 3",
+      "name": "CF 1096 Div 3",
       "time": "2026-04-30T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2227",
       "duration": 9000000
@@ -155,6 +148,13 @@
       "time": "2026-05-24T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "ARC ++ 221",
+      "time": "2026-05-31T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/arc221",
+      "duration": 9000000
     },
     {
       "platform": "AtCoder",
