@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-29T13:57:16.594Z",
+  "updated_at": "2026-04-30T02:54:58.636Z",
   "count": 25,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 236",
-      "time": "2026-04-29T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "CodeForces",
       "name": "CF 1096 Div 3",
@@ -148,6 +141,13 @@
       "time": "2026-05-24T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 240",
+      "time": "2026-05-27T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     },
     {
       "platform": "AtCoder",
