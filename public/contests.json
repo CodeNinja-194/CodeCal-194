@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-04-30T13:55:28.195Z",
+  "updated_at": "2026-05-01T03:25:29.739Z",
   "count": 25,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1096 Div 3",
-      "time": "2026-04-30T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2227",
-      "duration": 9000000
-    },
     {
       "platform": "AtCoder",
       "name": "ABC 456",
@@ -134,6 +127,13 @@
       "time": "2026-05-23T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc459",
       "duration": 6000000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "Spectral::Cup Round 2 (CF , Div. 1 + ...",
+      "time": "2026-05-23T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2229",
+      "duration": 10800000
     },
     {
       "platform": "LeetCode",
