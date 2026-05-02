@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-01T13:18:55.168Z",
+  "updated_at": "2026-05-02T02:42:50.695Z",
   "count": 25,
   "contests": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF (Div. 2, Based on Zhili Cup 2026)",
+      "name": "CF 1097 (Div. 2, Based on Zhili Cup 2...",
       "time": "2026-05-06T06:05:00.000Z",
       "url": "https://codeforces.com/contest/2224",
       "duration": 9000000
