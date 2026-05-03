@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-05-03T02:55:15.685Z",
-  "count": 24,
+  "updated_at": "2026-05-03T13:11:04.923Z",
+  "count": 23,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 500",
-      "time": "2026-05-03T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ARC 218",
-      "time": "2026-05-03T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/arc218",
-      "duration": 7200000
-    },
     {
       "platform": "AtCoder",
       "name": "Next DP Contest",
@@ -141,6 +127,13 @@
       "time": "2026-05-27T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 504",
+      "time": "2026-05-31T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
