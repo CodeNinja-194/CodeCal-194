@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-06T02:50:53.220Z",
-  "count": 22,
+  "updated_at": "2026-05-06T14:11:25.401Z",
+  "count": 21,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1097 (Div. 2, Based on Zhili Cup 2...",
-      "time": "2026-05-06T06:05:00.000Z",
-      "url": "https://codeforces.com/contest/2224",
-      "duration": 9000000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 237",
