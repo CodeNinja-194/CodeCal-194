@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-06T14:11:25.401Z",
-  "count": 21,
+  "updated_at": "2026-05-07T02:51:52.169Z",
+  "count": 22,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 237",
-      "time": "2026-05-06T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Biweekly 182",
@@ -73,6 +66,13 @@
       "duration": 7200000
     },
     {
+      "platform": "CodeForces",
+      "name": "Educational CF 190",
+      "time": "2026-05-18T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2230",
+      "duration": 7200000
+    },
+    {
       "platform": "CodeChef",
       "name": "CC Starters 239",
       "time": "2026-05-20T14:30:00.000Z",
@@ -127,6 +127,13 @@
       "time": "2026-05-31T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/arc221",
       "duration": 9000000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 241",
+      "time": "2026-06-03T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
+      "duration": 7200000
     },
     {
       "platform": "AtCoder",
