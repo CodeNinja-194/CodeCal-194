@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-08T02:54:37.485Z",
+  "updated_at": "2026-05-08T13:48:01.333Z",
   "count": 24,
   "contests": [
     {
@@ -63,7 +63,7 @@
       "name": "ARC ++ 220",
       "time": "2026-05-17T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/arc220",
-      "duration": 7200000
+      "duration": 9000000
     },
     {
       "platform": "CodeForces",
