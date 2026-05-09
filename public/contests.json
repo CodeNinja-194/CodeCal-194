@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-05-09T02:49:41.650Z",
-  "count": 24,
+  "updated_at": "2026-05-09T13:18:01.277Z",
+  "count": 23,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Biweekly 182",
-      "time": "2026-05-09T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "Polaris.AI Programming Contest 2026（A...",
-      "time": "2026-05-09T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc457",
-      "duration": 6000000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Weekly 501",
@@ -141,6 +127,13 @@
       "time": "2026-06-03T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Biweekly 184",
+      "time": "2026-06-06T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
