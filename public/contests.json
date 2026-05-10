@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-05-10T02:56:37.229Z",
-  "count": 23,
+  "updated_at": "2026-05-10T13:18:36.520Z",
+  "count": 22,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 501",
-      "time": "2026-05-10T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ARC -- 219",
-      "time": "2026-05-10T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/arc219",
-      "duration": 7200000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 238",
@@ -35,7 +21,7 @@
       "name": "CF Div 2",
       "time": "2026-05-16T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2228",
-      "duration": 7200000
+      "duration": 8100000
     },
     {
       "platform": "LeetCode",
@@ -141,6 +127,13 @@
       "time": "2026-06-06T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc461",
       "duration": 6000000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 505",
+      "time": "2026-06-07T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
