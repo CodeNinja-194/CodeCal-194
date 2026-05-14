@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-13T14:34:08.613Z",
-  "count": 25,
+  "updated_at": "2026-05-14T03:28:01.995Z",
+  "count": 26,
   "contests": [
     {
       "platform": "AtCoder",
@@ -106,6 +106,13 @@
       "time": "2026-05-30T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc460",
       "duration": 6000000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "CF Div 2",
+      "time": "2026-05-30T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2232",
+      "duration": 7200000
     },
     {
       "platform": "LeetCode",
