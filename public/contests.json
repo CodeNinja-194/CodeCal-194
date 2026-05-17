@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-05-17T03:27:50.059Z",
-  "count": 23,
+  "updated_at": "2026-05-17T13:20:31.068Z",
+  "count": 22,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 502",
-      "time": "2026-05-17T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ARC ++ 220",
-      "time": "2026-05-17T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/arc220",
-      "duration": 9000000
-    },
     {
       "platform": "CodeForces",
       "name": "Educational CF 190",
@@ -148,6 +134,13 @@
       "time": "2026-06-13T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc462",
       "duration": 6000000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 506",
+      "time": "2026-06-14T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
