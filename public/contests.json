@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-16T13:22:20.462Z",
-  "count": 24,
+  "updated_at": "2026-05-17T03:27:50.059Z",
+  "count": 23,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "CF 1098 Div 2",
-      "time": "2026-05-16T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2228",
-      "duration": 8100000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Weekly 502",
