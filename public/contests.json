@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-20T03:34:44.792Z",
+  "updated_at": "2026-05-20T15:20:04.399Z",
   "count": 22,
   "contests": [
-    {
-      "platform": "CodeChef",
-      "name": "CC Starters 239",
-      "time": "2026-05-20T14:30:00.000Z",
-      "url": "https://www.codechef.com/contests",
-      "duration": 7200000
-    },
     {
       "platform": "CodeForces",
       "name": "CF 1099 Div 2",
@@ -140,6 +133,13 @@
       "name": "ARC 222",
       "time": "2026-06-14T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/arc222",
+      "duration": 7200000
+    },
+    {
+      "platform": "CodeChef",
+      "name": "CC Starters 243",
+      "time": "2026-06-17T14:30:00.000Z",
+      "url": "https://www.codechef.com/contests",
       "duration": 7200000
     },
     {
