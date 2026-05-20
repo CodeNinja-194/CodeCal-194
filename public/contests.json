@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-19T15:21:27.201Z",
-  "count": 21,
+  "updated_at": "2026-05-20T03:34:44.792Z",
+  "count": 22,
   "contests": [
     {
       "platform": "CodeChef",
@@ -141,6 +141,13 @@
       "time": "2026-06-14T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/arc222",
       "duration": 7200000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "ABC 463",
+      "time": "2026-06-20T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/abc463",
+      "duration": 6000000
     },
     {
       "platform": "AtCoder",
