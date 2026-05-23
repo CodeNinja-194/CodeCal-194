@@ -1,21 +1,7 @@
 {
-  "updated_at": "2026-05-23T02:56:13.331Z",
-  "count": 21,
+  "updated_at": "2026-05-23T13:25:09.914Z",
+  "count": 20,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Biweekly 183",
-      "time": "2026-05-23T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "Tokio Marine & Nichido Fire Insurance...",
-      "time": "2026-05-23T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc459",
-      "duration": 6000000
-    },
     {
       "platform": "CodeForces",
       "name": "Spectral::Cup Round 2 (CF 1100, Div. ...",
@@ -134,6 +120,13 @@
       "time": "2026-06-17T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Biweekly 185",
+      "time": "2026-06-20T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
