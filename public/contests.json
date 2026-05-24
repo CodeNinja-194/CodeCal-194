@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-23T13:25:09.914Z",
-  "count": 20,
+  "updated_at": "2026-05-24T03:36:42.492Z",
+  "count": 19,
   "contests": [
-    {
-      "platform": "CodeForces",
-      "name": "Spectral::Cup Round 2 (CF 1100, Div. ...",
-      "time": "2026-05-23T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2229",
-      "duration": 10800000
-    },
     {
       "platform": "LeetCode",
       "name": "LC Weekly 503",
