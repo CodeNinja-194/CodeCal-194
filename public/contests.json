@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-24T03:36:42.492Z",
+  "updated_at": "2026-05-24T13:25:48.816Z",
   "count": 19,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 503",
-      "time": "2026-05-24T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 240",
@@ -127,6 +120,13 @@
       "time": "2026-06-20T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc463",
       "duration": 6000000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 507",
+      "time": "2026-06-21T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     },
     {
       "platform": "AtCoder",
