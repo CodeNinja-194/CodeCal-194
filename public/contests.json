@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-05-25T14:53:23.998Z",
-  "count": 19,
+  "updated_at": "2026-05-26T03:33:45.937Z",
+  "count": 20,
   "contests": [
     {
       "platform": "CodeChef",
@@ -71,6 +71,13 @@
       "time": "2026-06-07T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "Educational CF 191",
+      "time": "2026-06-09T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2233",
+      "duration": 7200000
     },
     {
       "platform": "CodeChef",
