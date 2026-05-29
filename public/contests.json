@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-28T15:53:38.023Z",
+  "updated_at": "2026-05-29T03:36:50.039Z",
   "count": 20,
   "contests": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "platform": "CodeForces",
-      "name": "CF Div 2",
+      "name": "CF 1101 Div 2",
       "time": "2026-05-30T14:35:00.000Z",
       "url": "https://codeforces.com/contest/2232",
       "duration": 7200000
