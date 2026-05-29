@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-05-29T03:36:50.039Z",
+  "updated_at": "2026-05-29T15:31:30.744Z",
   "count": 20,
   "contests": [
-    {
-      "platform": "AtCoder",
-      "name": "AHC 066",
-      "time": "2026-05-29T10:00:00.000Z",
-      "url": "https://atcoder.jp/contests/ahc066",
-      "duration": 864000000
-    },
     {
       "platform": "AtCoder",
       "name": "ABC 460",
@@ -64,6 +57,13 @@
       "time": "2026-06-07T08:00:00.000Z",
       "url": "https://leetcode.com/contest/",
       "duration": 5400000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "CF Div 2",
+      "time": "2026-06-07T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2234",
+      "duration": 8100000
     },
     {
       "platform": "CodeForces",
