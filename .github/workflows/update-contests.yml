@@ -2,7 +2,8 @@ name: Auto Update Contests
 
 on:
   schedule:
-    - cron: "0 0,12 * * *" # Runs at 00:00 and 12:00 UTC (Twice a day)
+    - cron: "0 12 * * 1" # Monday 12:00 UTC
+    - cron: "0 12 * * 4" # Thursday 12:00 UTC
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
