@@ -1,35 +1,7 @@
 {
-  "updated_at": "2026-05-30T03:25:38.962Z",
-  "count": 20,
+  "updated_at": "2026-06-01T17:24:26.870Z",
+  "count": 19,
   "contests": [
-    {
-      "platform": "AtCoder",
-      "name": "ABC 460",
-      "time": "2026-05-30T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc460",
-      "duration": 6000000
-    },
-    {
-      "platform": "CodeForces",
-      "name": "CF 1101 Div 2",
-      "time": "2026-05-30T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2232",
-      "duration": 7200000
-    },
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 504",
-      "time": "2026-05-31T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ARC ++ 221",
-      "time": "2026-05-31T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/arc221",
-      "duration": 9000000
-    },
     {
       "platform": "CodeChef",
       "name": "CC Starters 241",
@@ -129,6 +101,13 @@
       "duration": 5400000
     },
     {
+      "platform": "AtCoder",
+      "name": "AHC 067",
+      "time": "2026-06-21T10:00:00.000Z",
+      "url": "https://atcoder.jp/contests/ahc067",
+      "duration": 14400000
+    },
+    {
       "platform": "CodeChef",
       "name": "CC Starters 244",
       "time": "2026-06-24T14:30:00.000Z",
@@ -140,6 +119,20 @@
       "name": "第七回日本最強プログラマー学生選手権～Advance～ -予選- （ABC...",
       "time": "2026-06-27T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc464",
+      "duration": 6000000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 508",
+      "time": "2026-06-28T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
+    },
+    {
+      "platform": "AtCoder",
+      "name": "ABC 465",
+      "time": "2026-07-04T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/abc465",
       "duration": 6000000
     }
   ]
