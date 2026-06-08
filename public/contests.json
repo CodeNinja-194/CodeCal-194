@@ -1,35 +1,7 @@
 {
-  "updated_at": "2026-06-04T14:26:16.747Z",
+  "updated_at": "2026-06-08T15:36:08.132Z",
   "count": 19,
   "contests": [
-    {
-      "platform": "LeetCode",
-      "name": "LC Biweekly 184",
-      "time": "2026-06-06T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "AtCoder",
-      "name": "ABC 461",
-      "time": "2026-06-06T12:00:00.000Z",
-      "url": "https://atcoder.jp/contests/abc461",
-      "duration": 6000000
-    },
-    {
-      "platform": "LeetCode",
-      "name": "LC Weekly 505",
-      "time": "2026-06-07T08:00:00.000Z",
-      "url": "https://leetcode.com/contest/",
-      "duration": 5400000
-    },
-    {
-      "platform": "CodeForces",
-      "name": "CF Div 2",
-      "time": "2026-06-07T14:35:00.000Z",
-      "url": "https://codeforces.com/contest/2234",
-      "duration": 8100000
-    },
     {
       "platform": "CodeForces",
       "name": "Educational CF 191",
@@ -43,6 +15,13 @@
       "time": "2026-06-10T14:30:00.000Z",
       "url": "https://www.codechef.com/contests",
       "duration": 7200000
+    },
+    {
+      "platform": "CodeForces",
+      "name": "CF 1103 Div 3",
+      "time": "2026-06-12T14:35:00.000Z",
+      "url": "https://codeforces.com/contest/2236",
+      "duration": 9000000
     },
     {
       "platform": "AtCoder",
@@ -122,6 +101,13 @@
       "duration": 5400000
     },
     {
+      "platform": "AtCoder",
+      "name": "ARC 223",
+      "time": "2026-06-28T12:00:00.000Z",
+      "url": "https://atcoder.jp/contests/arc223",
+      "duration": 7200000
+    },
+    {
       "platform": "CodeChef",
       "name": "CC Starters 245",
       "time": "2026-07-01T14:30:00.000Z",
@@ -129,11 +115,25 @@
       "duration": 7200000
     },
     {
+      "platform": "LeetCode",
+      "name": "LC Biweekly 186",
+      "time": "2026-07-04T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
+    },
+    {
       "platform": "AtCoder",
       "name": "ABC 465",
       "time": "2026-07-04T12:00:00.000Z",
       "url": "https://atcoder.jp/contests/abc465",
       "duration": 6000000
+    },
+    {
+      "platform": "LeetCode",
+      "name": "LC Weekly 509",
+      "time": "2026-07-05T08:00:00.000Z",
+      "url": "https://leetcode.com/contest/",
+      "duration": 5400000
     }
   ]
 }
